@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import './ProjectCard.css';
@@ -5,6 +6,8 @@ import './ProjectCard.css';
 export default function ProjectCard({ project }) {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
+  const [imgError, setImgError] = useState(false);
+  const [imgLoaded, setImgLoaded] = useState(false);
 
   return (
     <motion.article
@@ -16,8 +19,22 @@ export default function ProjectCard({ project }) {
       whileHover={{ y: -5 }}
     >
       <div className="project-card__image">
-        {project.image ? (
-          <img src={project.image} alt={project.title} loading="lazy" />
+        {project.image && !imgError ? (
+          <>
+            {!imgLoaded && (
+              <div className="project-card__placeholder project-card__placeholder--loading">
+                <span className="project-card__spinner" />
+              </div>
+            )}
+            <img
+              src={project.image}
+              alt={`Capture d'écran de ${project.title}`}
+              loading="lazy"
+              onLoad={() => setImgLoaded(true)}
+              onError={() => setImgError(true)}
+              style={{ opacity: imgLoaded ? 1 : 0 }}
+            />
+          </>
         ) : (
           <div className="project-card__placeholder">
             <span>{project.title[0]}</span>

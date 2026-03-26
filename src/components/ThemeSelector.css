@@ -3,6 +3,41 @@
   bottom: 2rem;
   right: 2rem;
   z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* ── Pill desktop ── */
+.theme-selector__pill {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.75rem;
+  background: var(--color-bg-glass);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+  white-space: nowrap;
+  pointer-events: none;
+  transition: border-color 0.3s;
+}
+
+.theme-selector__pill-label {
+  font-family: var(--font-heading);
+  letter-spacing: 0.03em;
+  color: var(--color-accent);
+}
+
+/* Masquer la pill sur mobile (le bouton seul suffit) */
+@media (max-width: 768px) {
+  .theme-selector__pill {
+    display: none;
+  }
 }
 
 .theme-selector__trigger {
@@ -38,12 +73,34 @@
 
 .theme-selector__compass circle:last-child {
   fill: var(--color-accent);
+  stroke: none;
+}
+
+/* Rotation lente de l'aiguille au repos via CSS (fiable sur SVG) */
+.theme-selector__compass line {
+  transform-origin: 20px 20px;
+  animation: compass-idle 8s linear infinite;
+}
+
+@keyframes compass-idle {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Anchor : conteneur relatif centré sur le trigger */
+.theme-selector__anchor {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
 }
 
 .theme-selector__options {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  /* Centre sur le bouton (56px) */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 0;
   height: 0;
   pointer-events: none;
@@ -51,8 +108,9 @@
 
 .theme-selector__option {
   position: absolute;
-  bottom: 20px;
-  right: 20px;
+  /* Centré sur l'origine : décalage de la moitié de sa taille */
+  top: -26px;
+  left: -26px;
   width: 52px;
   height: 52px;
   border-radius: 50%;

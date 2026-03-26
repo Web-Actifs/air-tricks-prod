@@ -1,9 +1,12 @@
+const screenshot = (url) =>
+  `https://api.microlink.io?url=${encodeURIComponent(url)}&screenshot=true&meta=false&embed=screenshot.url`;
+
 export const webProjects = [
   {
     id: 'bilene-kite',
     title: 'Bilene Kite Center',
     url: 'https://bilenekite.com',
-    image: null,
+    image: screenshot('https://bilenekite.com'),
     category: 'web',
     stack: ['HTML/CSS', 'JavaScript', 'WebP', 'Multilingue'],
     description: {
@@ -15,7 +18,7 @@ export const webProjects = [
     id: 'la-poumerole',
     title: 'La Poumerole',
     url: 'https://www.lapoumerole.org',
-    image: null,
+    image: screenshot('https://www.lapoumerole.org'),
     category: 'web',
     stack: ['HTML/CSS', 'JavaScript', 'Responsive', 'Bilingue'],
     description: {
@@ -27,7 +30,7 @@ export const webProjects = [
     id: 'vetisol',
     title: 'Vetisol',
     url: 'https://www.vetisol.com',
-    image: null,
+    image: screenshot('https://www.vetisol.com'),
     category: 'web',
     stack: ['Framework moderne', 'Vercel', 'Trilingue', 'Carte interactive'],
     description: {
@@ -39,7 +42,7 @@ export const webProjects = [
     id: 'casa-ventoux',
     title: 'Casa du Ventoux',
     url: 'https://guillaume-etienne.github.io/web-casa-du-ventoux/',
-    image: null,
+    image: screenshot('https://guillaume-etienne.github.io/web-casa-du-ventoux/'),
     category: 'web',
     stack: ['HTML', 'CSS', 'JavaScript vanilla', 'GitHub Pages'],
     description: {
@@ -51,7 +54,7 @@ export const webProjects = [
     id: 'ohmyfood',
     title: 'OhMyFood',
     url: 'https://guillaume-etienne.github.io/P3-OpenClassroom-OhmyFood/',
-    image: null,
+    image: screenshot('https://guillaume-etienne.github.io/P3-OpenClassroom-OhmyFood/'),
     category: 'web',
     isTraining: true,
     stack: ['HTML', 'Sass', 'Animations CSS', 'Mobile-first'],
@@ -64,7 +67,7 @@ export const webProjects = [
     id: 'reservia',
     title: 'Reservia',
     url: 'https://guillaume-etienne.github.io/P2-Open-HTML-CSS-integration/',
-    image: null,
+    image: screenshot('https://guillaume-etienne.github.io/P2-Open-HTML-CSS-integration/'),
     category: 'web',
     isTraining: true,
     stack: ['HTML', 'CSS', 'Flexbox', 'Grid', 'Responsive'],

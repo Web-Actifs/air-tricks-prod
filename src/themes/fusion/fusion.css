@@ -6,14 +6,14 @@
   --color-bg: #faf8f5;
   --color-bg-card: #ffffff;
   --color-bg-muted: #f0eee9;
-  --color-bg-glass: rgba(250, 248, 245, 0.85);
+  --color-bg-glass: rgba(250, 248, 245, 0.88);
   --color-text: #1a1a2e;
   --color-text-muted: #6b6b80;
   --color-primary: #7c3aed;
   --color-primary-alpha: rgba(124, 58, 237, 0.1);
   --color-accent: #06b6d4;
   --color-border: #e5e3de;
-  --color-shadow: rgba(124, 58, 237, 0.08);
+  --color-shadow: rgba(124, 58, 237, 0.1);
   --font-heading: 'Space Grotesk', sans-serif;
   --font-body: 'DM Sans', sans-serif;
   --radius: 12px;
@@ -21,13 +21,20 @@
 }
 
 /* ============================================================
-   LAYOUT — Sticky nav with scroll morph
+   LAYOUT
    ============================================================ */
 .fusion-layout {
   min-height: 100vh;
   background: var(--color-bg);
 }
 
+.fusion-main {
+  /* pas de marge supplémentaire, la nav est sticky */
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
 .fusion-nav {
   position: sticky;
   top: 0;
@@ -35,23 +42,34 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 2rem;
+  padding: 1rem 2.5rem;
   background: var(--color-bg-glass);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid transparent;
-  transition: all 0.3s ease;
+  transition: padding 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 
 .fusion-nav--scrolled {
   border-bottom-color: var(--color-border);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
-  padding: 0.7rem 2rem;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+  padding: 0.65rem 2.5rem;
+}
+
+.fusion-nav__inner {
+  display: contents; /* les enfants directs gèrent leur position */
+}
+
+.fusion-nav__logo {
+  text-decoration: none;
+  flex-shrink: 0;
 }
 
 .fusion-nav__links {
   display: flex;
   gap: 2rem;
   align-items: center;
+  margin: 0 auto;
 }
 
 .fusion-nav__link {
@@ -59,16 +77,21 @@
   font-size: 0.9rem;
   font-weight: 500;
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color 0.2s;
   position: relative;
+  padding-bottom: 2px;
 }
 
-.fusion-nav__link:hover,
-.fusion-nav__link.active {
+.fusion-nav__link:hover {
   color: var(--color-primary);
 }
 
-.fusion-nav__link.active::after {
+.fusion-nav__link--active {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.fusion-nav__link--active::after {
   content: '';
   position: absolute;
   bottom: -4px;
@@ -79,378 +102,630 @@
   border-radius: 1px;
 }
 
-.fusion-nav__right {
+.fusion-nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.fusion-nav__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  width: 36px;
+}
+
+.fusion-nav__hamburger-line {
+  display: block;
+  height: 2px;
+  background: var(--color-text);
+  border-radius: 2px;
+  transition: all 0.3s;
+  transform-origin: center;
+}
+
+.fusion-nav__hamburger--open .fusion-nav__hamburger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.fusion-nav__hamburger--open .fusion-nav__hamburger-line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.fusion-nav__hamburger--open .fusion-nav__hamburger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile menu overlay */
+.fusion-mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: var(--color-bg);
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.fusion-mobile-menu__nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  width: 100%;
+  padding: 0 2rem;
+}
+
+.fusion-mobile-menu__link {
+  font-size: 1.6rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  color: var(--color-text);
+  text-decoration: none;
+  padding: 0.75rem 2rem;
+  transition: color 0.2s;
+  width: 100%;
+  text-align: center;
+}
+
+.fusion-mobile-menu__link:hover,
+.fusion-mobile-menu__link--active {
+  color: var(--color-primary);
+}
+
+.fusion-mobile-menu__actions {
+  margin-top: 2rem;
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-.fusion-hamburger {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: var(--color-text);
-  cursor: pointer;
-}
-
-.fusion-mobile-menu {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: var(--color-bg);
-  z-index: 99;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-}
-
-.fusion-mobile-menu.open {
-  display: flex;
-}
-
-.fusion-mobile-menu a {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--color-text);
-  text-decoration: none;
-}
-
 /* ============================================================
-   HERO — Split screen
+   HERO — Split screen (75vh, pas 100vh)
    ============================================================ */
 .fusion-hero {
-  min-height: 100vh;
+  height: 78vh;
+  min-height: 520px;
+  max-height: 800px;
   display: flex;
   position: relative;
   overflow: hidden;
 }
 
+/* Moitié gauche : océan / créatif */
 .fusion-hero__left {
   flex: 1;
-  background: linear-gradient(135deg, #0891b2, #06b6d4, #22d3ee);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: linear-gradient(135deg, #0891b2 0%, #06b6d4 60%, #22d3ee 100%);
   position: relative;
-  padding: 4rem 2rem;
+  overflow: hidden;
 }
 
-.fusion-hero__left svg {
+.fusion-hero__left-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.15) 0%, transparent 70%);
+}
+
+/* Vague SVG en bas à gauche */
+.fusion-hero__wave {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  opacity: 0.2;
+  height: 120px;
 }
 
+/* Cerf-volant décoratif */
+.fusion-hero__kite {
+  position: absolute;
+  top: 20%;
+  right: 15%;
+}
+
+.fusion-hero__kite-svg {
+  width: 80px;
+  height: 100px;
+}
+
+/* Moitié droite : code / tech */
 .fusion-hero__right {
   flex: 1;
   background: #1a1a2e;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: relative;
-  padding: 4rem 2rem;
   overflow: hidden;
+}
+
+.fusion-hero__right-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(124, 58, 237, 0.15) 0%, transparent 70%);
 }
 
 .fusion-hero__right::before {
   content: '{ }';
   position: absolute;
-  font-size: 15rem;
+  font-size: 18rem;
   font-family: 'JetBrains Mono', monospace;
-  color: rgba(124, 58, 237, 0.05);
+  color: rgba(124, 58, 237, 0.04);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  pointer-events: none;
+  user-select: none;
 }
 
-.fusion-hero__center {
+/* Lignes de code décoratives */
+.fusion-hero__code-lines {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  line-height: 2;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+}
+
+.fusion-hero__code-line {
+  color: rgba(255, 255, 255, 0.5);
+  white-space: nowrap;
+}
+
+.fusion-hero__code-line--indent {
+  padding-left: 1.5rem;
+}
+
+.fusion-hero__code-fn   { color: #60a5fa; }
+.fusion-hero__code-param{ color: #fbbf24; }
+.fusion-hero__code-str  { color: #34d399; }
+
+/* Dots terminal */
+.fusion-hero__terminal-dots {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  display: flex;
+  gap: 6px;
+}
+
+.fusion-hero__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.fusion-hero__dot--red    { background: #ff5f57; }
+.fusion-hero__dot--yellow { background: #febc2e; }
+.fusion-hero__dot--green  { background: #28c840; }
+
+/* Zone de fusion centrale */
+.fusion-hero__blend {
   position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 200px;
+  width: 160px;
   height: 100%;
-  background: linear-gradient(90deg, rgba(6, 182, 212, 0.3), rgba(124, 58, 237, 0.3));
-  filter: blur(60px);
-  z-index: 2;
+  background: linear-gradient(90deg,
+    rgba(6, 182, 212, 0.25),
+    rgba(124, 58, 237, 0.25)
+  );
+  filter: blur(50px);
   pointer-events: none;
+  z-index: 2;
 }
 
+/* Contenu centré sur les deux halves */
 .fusion-hero__content {
   position: absolute;
+  inset: 0;
   z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 90%;
-  max-width: 600px;
+  padding: 2rem;
+  pointer-events: none;
 }
 
 .fusion-hero__title {
   font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
   font-weight: 700;
   color: #fff;
-  margin-bottom: 1rem;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  margin-bottom: 0.75rem;
+  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.35);
+  line-height: 1.1;
 }
 
 .fusion-hero__tagline {
-  font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.85);
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 2rem;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
 }
 
-.fusion-hero__actions {
+.fusion-hero__ctas {
   display: flex;
   gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
+  pointer-events: auto;
 }
 
-.fusion-hero__btn {
-  padding: 0.8rem 2rem;
+.fusion-hero__cta {
+  padding: 0.8rem 1.8rem;
   border-radius: var(--radius);
+  font-family: var(--font-heading);
   font-weight: 600;
   font-size: 0.95rem;
   text-decoration: none;
-  transition: all 0.3s;
+  transition: all 0.25s;
+  display: inline-flex;
+  align-items: center;
 }
 
-.fusion-hero__btn--primary {
+.fusion-hero__cta--primary {
   background: var(--gradient-fusion);
   color: #fff;
   border: none;
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.35);
 }
 
-.fusion-hero__btn--primary:hover {
+.fusion-hero__cta--primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(124, 58, 237, 0.3);
+  box-shadow: 0 8px 28px rgba(124, 58, 237, 0.45);
 }
 
-.fusion-hero__btn--secondary {
-  background: rgba(255, 255, 255, 0.15);
+/* Bouton secondaire : fond sombre semi-transparent + contour blanc fort */
+.fusion-hero__cta--secondary {
+  background: rgba(0, 0, 0, 0.35);
   color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(4px);
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
 }
 
-.fusion-hero__btn--secondary:hover {
-  background: rgba(255, 255, 255, 0.25);
+.fusion-hero__cta--secondary:hover {
+  background: rgba(0, 0, 0, 0.55);
+  border-color: #fff;
 }
 
 /* ============================================================
-   PORTFOLIO — Bento grid + tilt
+   PORTFOLIO
    ============================================================ */
+.fusion-portfolio {
+  padding: 5rem 0;
+  background: var(--color-bg);
+}
+
+.fusion-portfolio__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.fusion-portfolio__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+}
+
+/* Filtres */
 .fusion-portfolio__filters {
   display: flex;
-  gap: 0.75rem;
+  gap: 0.6rem;
   margin-bottom: 2.5rem;
   flex-wrap: wrap;
 }
 
 .fusion-portfolio__filter {
+  position: relative;
   padding: 0.5rem 1.25rem;
   border-radius: 999px;
   border: 1px solid var(--color-border);
   background: transparent;
   color: var(--color-text-muted);
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.25s;
+  overflow: hidden;
 }
 
-.fusion-portfolio__filter.active,
 .fusion-portfolio__filter:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.fusion-portfolio__filter--active {
+  background: var(--gradient-fusion);
+  color: #fff !important;
+  border-color: transparent;
+}
+
+.fusion-portfolio__filter-indicator {
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-fusion);
+  border-radius: 999px;
+  z-index: -1;
+}
+
+/* Grille bento web (3 colonnes, certains items span 2) */
+.fusion-portfolio__bento {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+.fusion-portfolio__tilt-wrapper {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.fusion-portfolio__tilt-glare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: var(--radius);
+}
+
+/* Items 1 et 4 plus larges pour rompre la symétrie */
+.fusion-portfolio__bento-item--1,
+.fusion-portfolio__bento-item--4 {
+  grid-column: span 2;
+}
+
+/* Vidéos : 3 colonnes fixes */
+.fusion-portfolio__videos {
+  margin-top: 1rem;
+}
+
+.fusion-portfolio__section-title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.25rem;
+}
+
+.fusion-portfolio__video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+/* ============================================================
+   SERVICES
+   ============================================================ */
+.fusion-services {
+  padding: 5rem 0;
+  background: var(--color-bg-muted);
+}
+
+.fusion-services__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.fusion-services__header {
+  margin-bottom: 3rem;
+}
+
+.fusion-services__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.fusion-services__subtitle {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+}
+
+/* Grille bento services : 3 colonnes */
+.fusion-services__bento {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+/* Cards individuelles */
+.fusion-services__card {
+  position: relative;
+  background: var(--color-bg-card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.fusion-services__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px var(--color-shadow);
+}
+
+/* Bordure gradient animée au hover */
+.fusion-services__card-border {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  padding: 1px;
+  background: var(--gradient-fusion);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.fusion-services__card:hover .fusion-services__card-border {
+  opacity: 1;
+}
+
+.fusion-services__card-inner {
+  padding: 1.75rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Icône SVG : taille fixe, couleur accent */
+.fusion-services__icon {
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.fusion-services__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.fusion-services__card-title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.fusion-services__card-desc {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+/* Décoration vague organique */
+.fusion-services__organic-deco {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  width: 80px;
+  height: 30px;
+  opacity: 0.4;
+}
+
+/* Décoration grille de points */
+.fusion-services__grid-deco {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 6px);
+  gap: 5px;
+}
+
+.fusion-services__grid-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  opacity: 0.3;
+}
+
+/* Card stack : pleine largeur */
+.fusion-services__card--stack {
+  grid-column: 1 / -1;
+}
+
+/* Card créative : 2 colonnes */
+.fusion-services__card--creative,
+.fusion-services__card--network {
+  grid-column: span 1;
+}
+
+/* Tags stack technique */
+.fusion-services__stack-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.fusion-services__stack-tag {
+  padding: 0.35rem 0.85rem;
+  background: var(--color-bg-muted);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-text);
+  cursor: default;
+  transition: all 0.2s;
+}
+
+.fusion-services__stack-tag:hover {
   background: var(--gradient-fusion);
   color: #fff;
   border-color: transparent;
 }
 
-.fusion-portfolio__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 1.5rem;
-}
-
-.fusion-portfolio__grid .project-card {
-  transition: transform 0.3s;
-}
-
-.fusion-portfolio__grid .project-card:hover {
-  transform: perspective(800px) rotateY(2deg) rotateX(2deg);
-}
-
-.fusion-portfolio__videos {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
 /* ============================================================
-   SERVICES — Bento grid asymmetric
-   ============================================================ */
-.fusion-services__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 3rem;
-}
-
-.fusion-services__card {
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: 2rem;
-  transition: all 0.3s;
-  position: relative;
-  overflow: hidden;
-}
-
-.fusion-services__card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--gradient-fusion);
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.fusion-services__card:hover::before {
-  opacity: 1;
-}
-
-.fusion-services__card:hover {
-  box-shadow: 0 8px 30px var(--color-shadow);
-  transform: translateY(-3px);
-}
-
-.fusion-services__card:nth-child(1) {
-  grid-column: span 2;
-}
-
-.fusion-services__card-icon {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.fusion-services__card h3 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: var(--color-text);
-}
-
-.fusion-services__card p {
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
-  line-height: 1.6;
-}
-
-.fusion-services__stack h3 {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-}
-
-.fusion-services__stack-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.fusion-services__tech {
-  padding: 0.5rem 1rem;
-  background: var(--color-bg-muted);
-  border-radius: 999px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--color-text);
-  transition: all 0.3s;
-}
-
-.fusion-services__tech:hover {
-  background: var(--gradient-fusion);
-  color: #fff;
-}
-
-.fusion-services__extras {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin-top: 2.5rem;
-}
-
-.fusion-services__extra {
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: 2rem;
-}
-
-.fusion-services__extra h3 {
-  font-size: 1.05rem;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-  background: var(--gradient-fusion);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.fusion-services__extra p {
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
-  line-height: 1.6;
-}
-
-/* ============================================================
-   ABOUT — Split + timeline
+   ABOUT
    ============================================================ */
 .fusion-about__split {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: 1.5rem;
   margin-bottom: 3rem;
-  min-height: 200px;
+  min-height: 180px;
+}
+
+.fusion-about__creative {
+  background: linear-gradient(135deg, #0891b2, #22d3ee);
+  padding: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
   border-radius: var(--radius);
   overflow: hidden;
 }
 
-.fusion-about__creative {
-  background: linear-gradient(135deg, #06b6d4, #22d3ee);
-  padding: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  border-radius: var(--radius);
-}
-
 .fusion-about__creative h3 {
+  font-family: var(--font-heading);
   font-size: 1.8rem;
   font-weight: 700;
   color: #fff;
+  position: relative;
   z-index: 1;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
 .fusion-about__tech {
   background: #1a1a2e;
-  padding: 3rem;
+  padding: 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   border-radius: var(--radius);
+  overflow: hidden;
 }
 
 .fusion-about__gradient-blob {
@@ -460,6 +735,7 @@
   border-radius: 50%;
   filter: blur(60px);
   opacity: 0.4;
+  pointer-events: none;
 }
 
 .fusion-about__gradient-blob--ocean {
@@ -477,7 +753,7 @@
 .fusion-about__timeline {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .fusion-about__timeline-item {
@@ -488,7 +764,7 @@
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
-  transition: all 0.3s;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .fusion-about__timeline-item:hover {
@@ -499,6 +775,7 @@
 .fusion-about__timeline-icon {
   font-size: 1.5rem;
   flex-shrink: 0;
+  line-height: 1;
 }
 
 .fusion-about__timeline-content {
@@ -506,22 +783,24 @@
 }
 
 .fusion-about__timeline-period {
-  font-size: 0.8rem;
-  font-weight: 600;
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
   color: var(--color-primary);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.07em;
+  margin-bottom: 0.4rem;
 }
 
 .fusion-about__timeline-content p {
   font-size: 0.9rem;
   color: var(--color-text-muted);
   line-height: 1.6;
-  margin-top: 0.4rem;
+  margin: 0;
 }
 
 /* ============================================================
-   CONTACT — Modern form with gradient
+   CONTACT
    ============================================================ */
 .fusion-contact__form {
   max-width: 600px;
@@ -538,8 +817,7 @@
 .fusion-contact__field input,
 .fusion-contact__field textarea {
   width: 100%;
-  padding: 1rem;
-  padding-top: 1.5rem;
+  padding: 1.1rem 1rem 0.6rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   background: var(--color-bg-card);
@@ -547,42 +825,45 @@
   font-family: var(--font-body);
   color: var(--color-text);
   outline: none;
-  transition: border-color 0.3s;
+  transition: border-color 0.25s, box-shadow 0.25s;
 }
 
 .fusion-contact__field input:focus,
 .fusion-contact__field textarea:focus {
   border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-alpha);
 }
 
 .fusion-contact__field label {
   position: absolute;
-  top: 1rem;
+  top: 0.9rem;
   left: 1rem;
   font-size: 0.9rem;
   color: var(--color-text-muted);
   transition: all 0.2s;
   pointer-events: none;
+  transform-origin: left top;
 }
 
 .fusion-contact__field input:focus + label,
 .fusion-contact__field textarea:focus + label,
 .fusion-contact__field label.floating {
-  top: 0.3rem;
+  top: 0.25rem;
   font-size: 0.7rem;
   color: var(--color-primary);
 }
 
 .fusion-contact__submit {
-  padding: 1rem 2.5rem;
+  padding: 0.9rem 2.5rem;
   background: var(--gradient-fusion);
   color: #fff;
   border: none;
   border-radius: var(--radius);
+  font-family: var(--font-heading);
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: transform 0.25s, box-shadow 0.25s;
   align-self: flex-start;
 }
 
@@ -592,71 +873,123 @@
 }
 
 /* ============================================================
-   RESPONSIVE
+   RESPONSIVE — tablet (≤ 1024px)
    ============================================================ */
 @media (max-width: 1024px) {
-  .fusion-services__grid {
-    grid-template-columns: 1fr 1fr;
+  .fusion-portfolio__bento {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .fusion-services__card:nth-child(1) {
+  .fusion-portfolio__bento-item--1,
+  .fusion-portfolio__bento-item--4 {
+    grid-column: span 1;
+  }
+
+  .fusion-portfolio__video-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .fusion-services__bento {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .fusion-services__card--stack {
+    grid-column: 1 / -1;
+  }
+
+  .fusion-services__card--creative,
+  .fusion-services__card--network {
     grid-column: span 1;
   }
 }
 
+/* ============================================================
+   RESPONSIVE — mobile (≤ 768px)
+   ============================================================ */
 @media (max-width: 768px) {
+  /* Nav */
+  .fusion-nav {
+    padding: 0.75rem 1.25rem;
+  }
+
   .fusion-nav__links {
     display: none;
   }
 
-  .fusion-hamburger {
-    display: block;
+  .fusion-nav__hamburger {
+    display: flex;
   }
 
+  /* Hero : empilement vertical */
   .fusion-hero {
     flex-direction: column;
+    height: auto;
     min-height: auto;
+    max-height: none;
   }
 
   .fusion-hero__left,
   .fusion-hero__right {
-    min-height: 50vh;
+    min-height: 40vw;
+    flex: none;
+    height: 220px;
   }
 
-  .fusion-hero__center {
+  .fusion-hero__blend {
     top: auto;
     left: 0;
     bottom: 50%;
     transform: translateY(50%);
     width: 100%;
-    height: 200px;
-    background: linear-gradient(180deg, rgba(6, 182, 212, 0.3), rgba(124, 58, 237, 0.3));
+    height: 140px;
+    background: linear-gradient(180deg,
+      rgba(6, 182, 212, 0.3),
+      rgba(124, 58, 237, 0.3)
+    );
+    filter: blur(40px);
   }
 
   .fusion-hero__content {
     position: relative;
-    transform: none;
-    left: auto;
-    top: auto;
+    inset: auto;
     padding: 3rem 1.5rem;
-    background: linear-gradient(135deg, rgba(6, 182, 212, 0.9), rgba(124, 58, 237, 0.9));
+    background: linear-gradient(135deg,
+      rgba(6, 182, 212, 0.92),
+      rgba(124, 58, 237, 0.92)
+    );
+    pointer-events: auto;
   }
 
-  .fusion-portfolio__grid,
-  .fusion-portfolio__videos {
+  .fusion-hero__right::before {
+    font-size: 8rem;
+  }
+
+  /* Portfolio */
+  .fusion-portfolio__bento,
+  .fusion-portfolio__video-grid {
     grid-template-columns: 1fr;
   }
 
-  .fusion-services__grid {
+  .fusion-portfolio__bento-item--1,
+  .fusion-portfolio__bento-item--4 {
+    grid-column: span 1;
+  }
+
+  /* Services */
+  .fusion-services__bento {
     grid-template-columns: 1fr;
   }
 
-  .fusion-services__extras {
-    grid-template-columns: 1fr;
+  .fusion-services__card--stack,
+  .fusion-services__card--creative,
+  .fusion-services__card--network {
+    grid-column: span 1;
   }
 
+  /* About */
   .fusion-about__split {
     grid-template-columns: 1fr;
+    min-height: auto;
   }
 
   .fusion-about__timeline-item {
