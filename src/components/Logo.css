@@ -1,0 +1,32 @@
+.logo {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  text-decoration: none;
+  user-select: none;
+}
+
+.logo__text {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+}
+
+.logo__prod {
+  font-family: var(--font-heading);
+  font-weight: 300;
+  font-size: 1.4rem;
+  color: var(--color-accent);
+}
+
+.logo--large .logo__text,
+.logo--large .logo__prod {
+  font-size: 2.5rem;
+}
+
+.logo--small .logo__text,
+.logo--small .logo__prod {
+  font-size: 1rem;
+}

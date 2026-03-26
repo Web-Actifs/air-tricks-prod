@@ -1,0 +1,70 @@
+{
+  "nav": {
+    "home": "Home",
+    "portfolio": "Portfolio",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Air Tricks Prod",
+    "tagline": "From wind to pixels — creative web developer",
+    "cta_portfolio": "View my work",
+    "cta_contact": "Get in touch"
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "filter_all": "All",
+    "filter_web": "Web",
+    "filter_video": "Video",
+    "view_site": "Visit site",
+    "training_badge": "Training"
+  },
+  "services": {
+    "title": "Services",
+    "subtitle": "What I offer",
+    "web_creation": "Website creation",
+    "web_creation_desc": "Modern, responsive, and performant showcase websites tailored to your brand.",
+    "integration": "Web integration",
+    "integration_desc": "Pixel-perfect mockup integration, faithful to the provided design.",
+    "redesign": "Website redesign",
+    "redesign_desc": "Modernize your existing site: design, performance, accessibility.",
+    "maintenance": "Maintenance",
+    "maintenance_desc": "Technical support, updates, bug fixes and improvements.",
+    "optimization": "Optimization",
+    "optimization_desc": "Performance improvements, technical SEO, loading time optimization.",
+    "stack_title": "Tech stack",
+    "creative_title": "Creative edge",
+    "creative_desc": "Professional video/editing experience — visual storytelling, intuitive UX, drone footage.",
+    "network_title": "Technical background",
+    "network_desc": "15 years of network engineering — infrastructure, security, architecture. Technical rigor in service of the web."
+  },
+  "about": {
+    "title": "About",
+    "intro": "Creative web developer, former network engineer with an atypical career path.",
+    "network": "15 years of network engineering in IT — infrastructure, security, architecture.",
+    "kite": "Professional kitesurf videographer and editor with Air Tricks Prod, in partnership with Bilene Kite Center in Mozambique.",
+    "dev": "Transitioned to web development, certified by OpenClassrooms. The fusion of technical and creative.",
+    "name": "Guillaume Etienne"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Have a project in mind? Let's talk.",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send",
+    "success": "Message sent successfully!",
+    "error": "An error occurred. Please try again."
+  },
+  "theme_selector": {
+    "label": "Switch theme",
+    "ocean": "Ocean",
+    "code": "Code",
+    "fusion": "Fusion"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "made_with": "Made with passion by"
+  }
+}

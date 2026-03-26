@@ -1,0 +1,70 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "portfolio": "Portfolio",
+    "services": "Services",
+    "about": "À propos",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Air Tricks Prod",
+    "tagline": "Du vent aux pixels — développeur web créatif",
+    "cta_portfolio": "Voir mes réalisations",
+    "cta_contact": "Me contacter"
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "filter_all": "Tous",
+    "filter_web": "Web",
+    "filter_video": "Vidéo",
+    "view_site": "Voir le site",
+    "training_badge": "Formation"
+  },
+  "services": {
+    "title": "Services",
+    "subtitle": "Ce que je propose",
+    "web_creation": "Création de sites",
+    "web_creation_desc": "Sites vitrines modernes, responsive et performants, adaptés à votre image.",
+    "integration": "Intégration web",
+    "integration_desc": "Intégration pixel-perfect de maquettes, respect fidèle du design fourni.",
+    "redesign": "Refonte de site",
+    "redesign_desc": "Modernisation de votre site existant : design, performance, accessibilité.",
+    "maintenance": "Maintenance",
+    "maintenance_desc": "Suivi technique, mises à jour, corrections de bugs et évolutions.",
+    "optimization": "Optimisation",
+    "optimization_desc": "Amélioration des performances, SEO technique, temps de chargement.",
+    "stack_title": "Stack technique",
+    "creative_title": "Atout créatif",
+    "creative_desc": "Expérience vidéo/montage professionnel — storytelling visuel, UX intuitive, prises de vue drone.",
+    "network_title": "Background technique",
+    "network_desc": "15 ans d'ingénierie réseau — infrastructure, sécurité, architecture. Une rigueur technique au service du web."
+  },
+  "about": {
+    "title": "À propos",
+    "intro": "Développeur web créatif, ancien ingénieur réseau reconverti avec un parcours atypique.",
+    "network": "15 ans d'ingénierie réseau dans l'IT — infrastructure, sécurité, architecture.",
+    "kite": "Vidéaste et monteur professionnel kitesurf avec Air Tricks Prod, en partenariat avec Bilene Kite Center au Mozambique.",
+    "dev": "Reconverti développeur web, certifié par OpenClassrooms. La fusion du technique et du créatif.",
+    "name": "Guillaume Etienne"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Un projet en tête ? Parlons-en.",
+    "name": "Nom",
+    "email": "Email",
+    "message": "Message",
+    "send": "Envoyer",
+    "success": "Message envoyé avec succès !",
+    "error": "Une erreur est survenue. Veuillez réessayer."
+  },
+  "theme_selector": {
+    "label": "Changer de thème",
+    "ocean": "Ocean",
+    "code": "Code",
+    "fusion": "Fusion"
+  },
+  "footer": {
+    "rights": "Tous droits réservés.",
+    "made_with": "Fait avec passion par"
+  }
+}
