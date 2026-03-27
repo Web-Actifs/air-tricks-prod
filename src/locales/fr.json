@@ -65,6 +65,20 @@
   },
   "footer": {
     "rights": "Tous droits réservés.",
-    "made_with": "Fait avec passion par"
+    "made_with": "Fait avec passion par",
+    "legal": "Mentions légales"
+  },
+  "legal": {
+    "title": "Mentions légales & Confidentialité",
+    "mentions_title": "Mentions légales",
+    "publisher": "Responsable de publication",
+    "host": "Hébergeur",
+    "privacy_title": "Politique de confidentialité",
+    "data_collected": "Données collectées",
+    "data_purpose": "Finalité",
+    "data_retention": "Durée de conservation",
+    "data_rights": "Vos droits",
+    "responsibility": "Responsabilité",
+    "updated": "Dernière mise à jour"
   }
 }

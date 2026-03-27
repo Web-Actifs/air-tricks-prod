@@ -21,6 +21,18 @@
   margin: 0;
 }
 
+.footer__legal {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.footer__legal:hover {
+  opacity: 1;
+}
+
 .footer__credit strong {
   color: var(--color-accent);
 }

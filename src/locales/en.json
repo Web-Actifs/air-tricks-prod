@@ -65,6 +65,20 @@
   },
   "footer": {
     "rights": "All rights reserved.",
-    "made_with": "Made with passion by"
+    "made_with": "Made with passion by",
+    "legal": "Legal notice"
+  },
+  "legal": {
+    "title": "Legal Notice & Privacy Policy",
+    "mentions_title": "Legal notice",
+    "publisher": "Publisher",
+    "host": "Hosting",
+    "privacy_title": "Privacy policy",
+    "data_collected": "Data collected",
+    "data_purpose": "Purpose",
+    "data_retention": "Retention period",
+    "data_rights": "Your rights",
+    "responsibility": "Liability",
+    "updated": "Last updated"
   }
 }

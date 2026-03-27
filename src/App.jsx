@@ -12,6 +12,7 @@ const PortfolioPage = lazy(() => import('./pages/PortfolioPage'));
 const ServicesPage = lazy(() => import('./pages/ServicesPage'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
+const LegalPage = lazy(() => import('./pages/LegalPage'));
 
 const OceanLayout = lazy(() => import('./themes/ocean/OceanLayout'));
 const CodeLayout = lazy(() => import('./themes/code/CodeLayout'));
@@ -36,6 +37,7 @@ function ThemedApp() {
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/legal" element={<LegalPage />} />
         </Routes>
         <Footer />
       </Layout>
