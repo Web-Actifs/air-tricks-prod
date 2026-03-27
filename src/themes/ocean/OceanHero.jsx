@@ -14,7 +14,6 @@ export default function OceanHero() {
 
   const textY = useTransform(scrollYProgress, [0, 1], [0, 180]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
-  const waveY = useTransform(scrollYProgress, [0, 1], [0, -40]);
 
   return (
     <section className="ocean-hero" ref={sectionRef}>
@@ -73,7 +72,7 @@ export default function OceanHero() {
       </motion.div>
 
       {/* Animated SVG wave at bottom */}
-      <motion.div className="ocean-hero__wave" style={{ y: waveY }} aria-hidden="true">
+      <div className="ocean-hero__wave" aria-hidden="true">
         <svg
           className="ocean-wave-svg"
           viewBox="0 0 1440 180"
@@ -92,7 +91,7 @@ export default function OceanHero() {
             d="M0,155 C200,130 400,170 600,150 C800,130 1000,170 1200,145 C1350,130 1400,160 1440,155 L1440,180 L0,180 Z"
           />
         </svg>
-      </motion.div>
+      </div>
     </section>
   );
 }

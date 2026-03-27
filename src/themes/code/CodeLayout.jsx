@@ -20,9 +20,10 @@ export default function CodeLayout({ children }) {
   return (
     <div className="code-layout">
       <aside className="code-sidebar">
-        <div className="code-sidebar__top">
+        <NavLink to="/" className="code-sidebar__top">
+          <span className="code-sidebar__monogram" aria-hidden="true">A</span>
           <Logo size="small" />
-        </div>
+        </NavLink>
         <nav className="code-sidebar__nav">
           {navItems.map(({ to, label, icon }) => (
             <NavLink
@@ -45,7 +46,9 @@ export default function CodeLayout({ children }) {
 
       {/* Mobile nav */}
       <nav className="code-mobile-nav">
-        <Logo size="small" />
+        <NavLink to="/" className="code-mobile-nav__logo">
+          <Logo size="small" />
+        </NavLink>
         <button
           className="code-mobile-nav__toggle"
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -55,9 +58,17 @@ export default function CodeLayout({ children }) {
         </button>
       </nav>
       {mobileOpen && (
-        <div className="code-mobile-menu" onClick={() => setMobileOpen(false)}>
+        <div className="code-mobile-menu">
           {navItems.map(({ to, label, icon }) => (
-            <NavLink key={to} to={to} end={to === '/'} className="code-mobile-menu__link">
+            <NavLink
+              key={to}
+              to={to}
+              end={to === '/'}
+              className={({ isActive }) =>
+                `code-mobile-menu__link ${isActive ? 'active' : ''}`
+              }
+              onClick={() => setMobileOpen(false)}
+            >
               <span>{icon}</span> {t(label)}
             </NavLink>
           ))}

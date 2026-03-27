@@ -73,7 +73,41 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 0 8px;
+  position: relative;
+  height: 32px;
+}
+
+/* Monogramme visible quand replié */
+.code-sidebar__monogram {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  transition: opacity 0.2s ease;
+  flex-shrink: 0;
+}
+
+/* Logo positionné en absolu, invisible quand replié */
+.code-sidebar__top .logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+/* Au survol : monogramme disparaît, logo apparaît */
+.code-sidebar:hover .code-sidebar__monogram {
+  opacity: 0;
+}
+
+.code-sidebar:hover .code-sidebar__top .logo {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .code-sidebar__bottom {
@@ -114,6 +148,10 @@
 
 .code-mobile-nav {
   display: none;
+}
+
+.code-mobile-nav__logo {
+  text-decoration: none;
 }
 
 .code-mobile-menu {
@@ -1339,14 +1377,23 @@
    RESPONSIVE
    ============================================================ */
 @media (max-width: 768px) {
+  /* Layout en colonne, sans scroll horizontal */
+  .code-layout {
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
   .code-sidebar {
     display: none;
   }
 
   .code-content {
     margin-left: 0;
+    width: 100%;
+    overflow-x: hidden;
   }
 
+  /* Nav mobile : barre fixe en haut */
   .code-mobile-nav {
     display: flex;
     align-items: center;
@@ -1354,9 +1401,18 @@
     padding: 12px 16px;
     background: #0d0d14;
     border-bottom: 1px solid var(--color-border);
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 100;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    height: 52px;
+    box-sizing: border-box;
+  }
+
+  /* Compenser la hauteur de la nav fixe */
+  .code-content {
+    padding-top: 52px;
   }
 
   .code-mobile-nav__toggle {
@@ -1367,84 +1423,51 @@
     padding: 4px 12px;
     border-radius: var(--radius);
     font-family: var(--font-heading);
+    cursor: pointer;
+    line-height: 1;
   }
 
+  /* Menu mobile : overlay plein écran par-dessus le contenu */
   .code-mobile-menu {
     display: flex;
     flex-direction: column;
-    padding: 16px;
+    position: fixed;
+    top: 52px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 199;
     background: #0d0d14;
-    border-bottom: 1px solid var(--color-border);
+    border-top: 1px solid var(--color-border);
+    padding: 16px;
     gap: 8px;
+    overflow-y: auto;
   }
 
   .code-mobile-menu__link {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 12px 16px;
+    padding: 14px 16px;
     color: var(--color-text-muted);
     font-family: var(--font-heading);
-    font-size: 0.85rem;
+    font-size: 1rem;
     border-radius: var(--radius);
     text-decoration: none;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
   }
 
-  .code-mobile-menu__link:hover {
+  .code-mobile-menu__link:hover,
+  .code-mobile-menu__link.active {
     color: var(--color-primary);
     background: var(--color-primary-alpha);
+    border-color: var(--color-border);
   }
 
-  .code-main {
-    margin-left: 0;
-  }
-
-  /* Status bar full width */
+  /* Status bar */
   .code-statusbar {
     left: 0;
-    bottom: 56px;
-  }
-
-  /* Mobile bottom tabs */
-  .code-mobile-tabs {
-    display: flex;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 56px;
-    background: #0d0d14;
-    border-top: 1px solid var(--color-border);
-    z-index: 100;
-    justify-content: space-around;
-    align-items: center;
-    padding: 0 4px;
-  }
-
-  .code-mobile-tabs__link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    padding: 6px 10px;
-    color: var(--color-text-muted);
-    text-decoration: none;
-    font-family: var(--font-heading);
-    font-size: 0.6rem;
-    transition: color 0.2s ease;
-    border-radius: var(--radius);
-  }
-
-  .code-mobile-tabs__link.active {
-    color: var(--color-primary);
-  }
-
-  .code-mobile-tabs__link:hover {
-    color: var(--color-primary);
-  }
-
-  .code-mobile-tabs__icon {
-    font-size: 1.2rem;
   }
 
   /* Hero responsive */
@@ -1455,6 +1478,7 @@
   .code-hero__terminal-body {
     padding: 16px;
     font-size: 0.72rem;
+    overflow-x: auto;
   }
 
   .code-hero__actions {
@@ -1512,6 +1536,7 @@
   .code-about__file-body {
     padding: 16px;
     font-size: 0.72rem;
+    overflow-x: auto;
   }
 
   /* Contact responsive */
