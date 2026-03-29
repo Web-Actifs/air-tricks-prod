@@ -18,7 +18,7 @@ export default function LegalPage() {
           <p>Auto-entrepreneur — SIRET : 534 705 876 00033</p>
           <p>165, chemin des érables<br />01600 Saint Bernard</p>
           <p>Tél. : 06 51 79 05 40</p>
-          <p>Email : <a href="mailto:contact@airtricksprod.fr" className="legal-page__link">contact@airtricksprod.fr</a></p>
+          <p>Email : <a href="mailto:gsetienne@free.fr" className="legal-page__link">contact@airtricksprod.fr</a></p>
 
           <h3 className="legal-page__h3">{t('legal.host')}</h3>
           <p>Vercel Inc.</p>
