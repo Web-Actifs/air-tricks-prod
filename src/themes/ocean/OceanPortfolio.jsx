@@ -1,14 +1,27 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProjectCard from '../../components/ProjectCard';
 import VideoCard from '../../components/VideoCard';
+import TiltCard from '../../components/TiltCard';
 import { webProjects, videoProjects } from '../../data/projects';
+
+// Tilt « flottant » : ressort mou, amplitude douce, pop profond, reflet cyan caustique
+const oceanTilt = {
+  className: 'ocean-tilt',
+  maxTilt: 6,
+  scale: 1.03,
+  stiffness: 140,
+  damping: 18,
+  perspective: 900,
+  translateZ: 18,
+  glareColor: 'rgba(125, 224, 255, 0.22)',
+  glareSpread: 65,
+};
 
 export default function OceanPortfolio() {
   const { t } = useTranslation();
   const [filter, setFilter] = useState('all');
-  const galleryRef = useRef(null);
 
   const filters = [
     { key: 'all', label: t('portfolio.filter_all') },
@@ -66,20 +79,16 @@ export default function OceanPortfolio() {
               transition={{ duration: 0.4 }}
             >
               <h3 className="ocean-portfolio__subtitle">Web</h3>
-              <div className="ocean-portfolio__gallery" ref={galleryRef}>
+              <div className="ocean-portfolio__gallery">
                 <div className="ocean-portfolio__track">
                   {webProjects.map((project) => (
                     <div className="ocean-portfolio__slide" key={project.id}>
-                      <ProjectCard project={project} />
+                      <TiltCard {...oceanTilt}>
+                        <ProjectCard project={project} />
+                      </TiltCard>
                     </div>
                   ))}
                 </div>
-              </div>
-              {/* Scroll hint */}
-              <div className="ocean-portfolio__scroll-hint" aria-hidden="true">
-                <span className="ocean-portfolio__scroll-arrow">&larr;</span>
-                <span className="ocean-portfolio__scroll-text">scroll</span>
-                <span className="ocean-portfolio__scroll-arrow">&rarr;</span>
               </div>
             </motion.div>
           )}
@@ -101,7 +110,9 @@ export default function OceanPortfolio() {
               </h3>
               <div className="ocean-portfolio__video-grid">
                 {videoProjects.map((video) => (
-                  <VideoCard key={video.id} video={video} />
+                  <TiltCard key={video.id} {...oceanTilt}>
+                    <VideoCard video={video} />
+                  </TiltCard>
                 ))}
               </div>
             </motion.div>

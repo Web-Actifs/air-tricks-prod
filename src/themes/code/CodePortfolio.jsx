@@ -3,9 +3,23 @@ import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProjectCard from '../../components/ProjectCard';
 import VideoCard from '../../components/VideoCard';
+import TiltCard from '../../components/TiltCard';
 import { webProjects, videoProjects } from '../../data/projects';
 
 const filters = ['all', 'web', 'video'];
+
+// Tilt « machine » : ressort sec et précis, snap net, lueur néon + scanline
+const codeTilt = {
+  className: 'code-tilt',
+  maxTilt: 9,
+  scale: 1.02,
+  stiffness: 420,
+  damping: 26,
+  perspective: 700,
+  translateZ: 6,
+  glareColor: 'rgba(74, 222, 128, 0.16)',
+  glareSpread: 55,
+};
 
 export default function CodePortfolio() {
   const { t } = useTranslation();
@@ -40,7 +54,9 @@ export default function CodePortfolio() {
             exit={{ opacity: 0 }}
           >
             {webProjects.map((p) => (
-              <ProjectCard key={p.id} project={p} />
+              <TiltCard key={p.id} {...codeTilt}>
+                <ProjectCard project={p} />
+              </TiltCard>
             ))}
           </motion.div>
         )}
@@ -56,7 +72,9 @@ export default function CodePortfolio() {
             exit={{ opacity: 0 }}
           >
             {videoProjects.map((v) => (
-              <VideoCard key={v.id} video={v} />
+              <TiltCard key={v.id} {...codeTilt}>
+                <VideoCard video={v} />
+              </TiltCard>
             ))}
           </motion.div>
         )}

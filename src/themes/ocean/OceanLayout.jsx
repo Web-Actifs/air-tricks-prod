@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import Logo from '../../components/Logo';
 import LanguageToggle from '../../components/LanguageToggle';
+import OceanDepth from './OceanDepth';
 import './ocean.css';
 
 export default function OceanLayout({ children }) {
@@ -38,6 +39,9 @@ export default function OceanLayout({ children }) {
 
   return (
     <div className="ocean-layout">
+      {/* ---------- Profondeur : neige marine, plancton, abysse ---------- */}
+      <OceanDepth />
+
       {/* ---------- Navbar ---------- */}
       <header className={`ocean-nav ${scrolled ? 'ocean-nav--scrolled' : ''}`}>
         <div className="ocean-nav__inner">

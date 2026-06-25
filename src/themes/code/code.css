@@ -140,10 +140,24 @@
 }
 
 .code-content {
+  position: relative;
+  z-index: 1;
   flex: 1;
   margin-left: 72px;
   min-height: 100vh;
   transition: margin-left 0.3s ease;
+}
+
+/* Pluie Matrix : fond fixe, derrière le contenu transparent.
+   Opacité pilotée en JS (0 dans le hero → fondu au scroll dès le Portfolio). */
+.code-matrix {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
 }
 
 .code-mobile-nav {
@@ -271,8 +285,7 @@
   color: var(--color-primary);
 }
 
-.code-hero__content {
-  margin-top: 32px;
+.code-hero__header {
   text-align: center;
 }
 
@@ -281,12 +294,13 @@
   font-size: clamp(1.8rem, 4vw, 2.5rem);
   font-weight: 700;
   color: var(--color-text);
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 }
 
 .code-hero__tagline {
   font-family: var(--font-heading);
   font-size: 0.9rem;
+  line-height: 1.7;
   color: var(--color-text-muted);
 }
 
@@ -519,11 +533,31 @@
 .code-hero {
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 80px 24px;
+  gap: 48px;
+  padding: 96px 24px;
   position: relative;
   overflow: hidden;
+}
+
+/* Réseau de points 3D reliés (canvas), en fond du hero */
+.code-hero__constellation {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.6;
+  mix-blend-mode: screen;
+}
+
+/* En-tête, terminal et CTA au-dessus de la constellation */
+.code-hero__header,
+.code-hero__terminal,
+.code-hero__actions {
+  position: relative;
+  z-index: 1;
 }
 
 .code-hero__bg-grid {
@@ -567,7 +601,11 @@
 
 /* --- Terminal Window --- */
 .code-hero__terminal {
-  background: #0d0d14;
+  width: 100%;
+  max-width: 640px;
+  background: rgba(13, 13, 20, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid var(--color-border);
   border-radius: 10px;
   overflow: hidden;
@@ -581,7 +619,7 @@
   align-items: center;
   gap: 8px;
   padding: 12px 16px;
-  background: #16161e;
+  background: rgba(22, 22, 30, 0.55);
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -654,7 +692,7 @@
 .code-hero__actions {
   display: flex;
   gap: 16px;
-  margin-top: 32px;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -777,7 +815,12 @@
 .code-portfolio__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 24px;
+  /* row-gap large : nette respiration verticale entre les rangées (pop + ombre
+     au survol ont la place, et les écarts restent réguliers d'une rangée à
+     l'autre). column-gap inchangé. */
+  gap: 48px 24px;
+  /* stretch (défaut) : toutes les cartes d'une rangée ont la même hauteur, donc
+     les écarts entre rangées sont réguliers (1→2 = 2→3). */
 }
 
 /* --- Scan line effect on project cards --- */
@@ -835,6 +878,71 @@
   box-shadow: 0 0 20px rgba(0, 255, 136, 0.08);
 }
 
+/* --- Tilt « machine » des cartes portfolio --- */
+.code-tilt {
+  position: relative;
+  /* Grille à cellule unique : la carte remplit le wrapper (lui-même étiré à la
+     hauteur de la rangée). Donc la carte fait la hauteur de la rangée, sa
+     bordure verte est toujours au bas du wrapper (plus de scanline qui dépasse
+     dessous), et les hauteurs sont homogènes d'une rangée à l'autre. */
+  display: grid;
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: box-shadow 0.25s ease;
+  will-change: transform;
+}
+
+/* Pas de liseré net ici : la bordure verte vient de .project-card (qui monte
+   de 5px au survol via son whileHover). Un anneau sur le wrapper resterait,
+   lui, fixe → on verrait deux lignes vertes décalées en bas. On ne garde que
+   le halo néon diffus + l'ombre portée. */
+.code-tilt:hover {
+  /* la carte survolée passe au-dessus de ses voisines (sinon celles d'après
+     dans le DOM se peignent par-dessus son pop → faux chevauchement). */
+  z-index: 5;
+  box-shadow:
+    0 14px 32px -16px rgba(0, 0, 0, 0.6),
+    0 0 28px -6px rgba(0, 255, 136, 0.45);
+}
+
+/* Scanline terminal qui apparaît au survol */
+.code-tilt::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: inherit;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 136, 0.05) 2px,
+    rgba(0, 255, 136, 0.05) 4px
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.code-tilt:hover::after { opacity: 1; }
+
+/* Trait néon qui balaye le haut de la carte au survol */
+.code-tilt::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 3;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent, #a855f7));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+
+.code-tilt:hover::before { transform: scaleX(1); }
+
 /* --- Video section --- */
 .code-portfolio__section-title {
   font-family: var(--font-heading);
@@ -849,6 +957,13 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: 24px;
+}
+
+/* Le bloc vidéos suit directement la grille web (pas de titre de section entre
+   les deux). Sans ça il est collé sous la dernière rangée web → on aère, mais
+   uniquement quand la grille web précède (filtre « all »), pas en vue vidéo. */
+.code-portfolio__grid + .code-portfolio__videos {
+  margin-top: 56px;
 }
 
 .code-portfolio .video-card {

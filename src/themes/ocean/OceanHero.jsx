@@ -3,6 +3,18 @@ import { useTranslation } from 'react-i18next';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
+// Rayons irréguliers : largeurs, angles, positions et rythmes non uniformes,
+// évasés depuis la surface (transform-origin en haut) pour un rendu réaliste.
+const OCEAN_RAYS = [
+  { left: 16, width: 58, rotate: -13, opacity: 0.10, duration: 11, delay: 0 },
+  { left: 29, width: 34, rotate: -8,  opacity: 0.06, duration: 14, delay: 1.6 },
+  { left: 43, width: 92, rotate: -3,  opacity: 0.12, duration: 9,  delay: 0.6 },
+  { left: 54, width: 26, rotate: 2,   opacity: 0.05, duration: 13, delay: 2.3 },
+  { left: 62, width: 68, rotate: 6,   opacity: 0.10, duration: 10, delay: 0.9 },
+  { left: 75, width: 44, rotate: 11,  opacity: 0.08, duration: 12, delay: 1.9 },
+  { left: 87, width: 30, rotate: 16,  opacity: 0.05, duration: 15, delay: 0.3 },
+];
+
 export default function OceanHero() {
   const { t } = useTranslation();
   const sectionRef = useRef(null);
@@ -20,16 +32,37 @@ export default function OceanHero() {
       {/* Background gradient (placeholder for video) */}
       <div className="ocean-hero__bg" aria-hidden="true">
         <div className="ocean-hero__gradient" />
-        {/* Ambient floating particles */}
-        <div className="ocean-hero__particles">
-          {Array.from({ length: 18 }).map((_, i) => (
-            <span key={i} className="ocean-hero__particle" style={{
-              '--delay': `${i * 0.7}s`,
-              '--x': `${10 + Math.random() * 80}%`,
-              '--size': `${2 + Math.random() * 4}px`,
-              '--duration': `${6 + Math.random() * 8}s`,
+        {/* Brume marine floutée qui dérive */}
+        <div className="ocean-hero__haze" />
+        {/* Rayons de lumière filtrant depuis la surface */}
+        <div className="ocean-hero__rays">
+          {OCEAN_RAYS.map((r, i) => (
+            <span key={i} className="ocean-hero__ray" style={{
+              '--left': `${r.left}%`,
+              '--width': `${r.width}px`,
+              '--rotate': `${r.rotate}deg`,
+              '--opacity': r.opacity,
+              '--duration': `${r.duration}s`,
+              '--delay': `${r.delay}s`,
             }} />
           ))}
+        </div>
+        {/* Ambient floating particles */}
+        <div className="ocean-hero__particles">
+          {Array.from({ length: 28 }).map((_, i) => {
+            const size = 1.5 + Math.pow(Math.random(), 2.4) * 9;
+            const blur = size < 4 ? (4 - size) * 0.5 : 0;
+            return (
+              <span key={i} className="ocean-hero__particle" style={{
+                '--delay': `${(i * 0.5).toFixed(2)}s`,
+                '--x': `${5 + Math.random() * 90}%`,
+                '--size': `${size.toFixed(1)}px`,
+                '--duration': `${7 + Math.random() * 9}s`,
+                '--sway': `${(Math.random() * 70 - 35).toFixed(0)}px`,
+                '--blur': `${blur.toFixed(1)}px`,
+              }} />
+            );
+          })}
         </div>
       </div>
 

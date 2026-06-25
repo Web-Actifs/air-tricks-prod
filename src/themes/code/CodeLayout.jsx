@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Logo from '../../components/Logo';
 import LanguageToggle from '../../components/LanguageToggle';
+import CodeMatrixRain from './CodeMatrixRain';
 import './code.css';
 
 const navItems = [
@@ -16,9 +17,14 @@ const navItems = [
 export default function CodeLayout({ children }) {
   const { t } = useTranslation();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { pathname } = useLocation();
 
   return (
     <div className="code-layout">
+      {/* Pluie Matrix en fond. Sur la home one-page : fondu au scroll à partir
+          du Portfolio (la constellation occupe le hero). Ailleurs : directe. */}
+      <CodeMatrixRain pathname={pathname} />
+
       <aside className="code-sidebar">
         <NavLink to="/" className="code-sidebar__top">
           <span className="code-sidebar__monogram" aria-hidden="true">A</span>

@@ -40,6 +40,7 @@
    Layout
    ========================================================================== */
 .ocean-layout {
+  position: relative;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -233,6 +234,75 @@
   );
 }
 
+/* Brume marine : couches bleu-vert floutées qui dérivent lentement */
+.ocean-hero__haze {
+  position: absolute;
+  inset: -12%;
+  pointer-events: none;
+  background:
+    radial-gradient(48% 40% at 25% 28%, rgba(20, 90, 138, 0.28), transparent 70%),
+    radial-gradient(44% 50% at 80% 58%, rgba(13, 59, 102, 0.30), transparent 72%),
+    radial-gradient(58% 46% at 55% 88%, rgba(8, 47, 73, 0.34), transparent 75%);
+  filter: blur(45px);
+  opacity: 0.75;
+  animation: ocean-haze-drift 22s ease-in-out infinite alternate;
+}
+
+@keyframes ocean-haze-drift {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(2.5%, -2.5%) scale(1.08); }
+}
+
+/* Rayons de lumière : faisceaux individuels évasés depuis la surface */
+.ocean-hero__rays {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ocean-hero__ray {
+  position: absolute;
+  top: -12%;
+  left: var(--left);
+  width: var(--width);
+  height: 115%;
+  transform-origin: top center;
+  transform: rotate(var(--rotate));
+  background: linear-gradient(
+    to bottom,
+    rgba(190, 242, 255, var(--opacity)) 0%,
+    rgba(125, 224, 255, calc(var(--opacity) * 0.45)) 42%,
+    transparent 86%
+  );
+  filter: blur(9px);
+  mix-blend-mode: screen;
+  animation: ocean-ray-shimmer var(--duration) var(--delay) ease-in-out infinite alternate;
+}
+
+@keyframes ocean-ray-shimmer {
+  0%   { opacity: 0.45; transform: rotate(var(--rotate)) scaleX(0.85); }
+  100% { opacity: 1;    transform: rotate(calc(var(--rotate) + 1.5deg)) scaleX(1.15); }
+}
+
+/* Vignette : profondeur cinématographique sur les bords */
+.ocean-hero__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    120% 95% at 50% 28%,
+    transparent 52%,
+    rgba(3, 18, 38, 0.55) 100%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ocean-hero__ray,
+  .ocean-hero__haze { animation: none; }
+}
+
 /* Floating particles */
 .ocean-hero__particles {
   position: absolute;
@@ -241,26 +311,46 @@
 }
 
 .ocean-hero__particle {
+  --sway: 0px;
+  --blur: 0px;
   position: absolute;
   bottom: -10%;
   left: var(--x);
   width: var(--size);
   height: var(--size);
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.35);
+  /* Profondeur de champ : les petites bulles (au loin) sont légèrement floues */
+  filter: blur(var(--blur));
+  /* Bulle vitrée : reflet net en haut-gauche, corps translucide */
+  background: radial-gradient(
+    circle at 32% 28%,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.25) 38%,
+    rgba(125, 224, 255, 0.08) 72%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  box-shadow:
+    inset 0 0 3px rgba(255, 255, 255, 0.5),
+    0 0 6px rgba(125, 224, 255, 0.25);
   animation: ocean-float var(--duration) var(--delay) ease-in infinite;
 }
 
 @keyframes ocean-float {
   0% {
-    transform: translateY(0) scale(1);
+    transform: translate(0, 0) scale(1);
     opacity: 0;
   }
   10% {
-    opacity: 0.7;
+    opacity: 0.75;
+  }
+  33% {
+    transform: translate(var(--sway), -33vh) scale(0.85);
+  }
+  66% {
+    transform: translate(calc(var(--sway) * -1), -66vh) scale(0.6);
   }
   100% {
-    transform: translateY(-110vh) scale(0.4);
+    transform: translate(0, -110vh) scale(0.4);
     opacity: 0;
   }
 }
@@ -484,62 +574,22 @@
 }
 
 /* Horizontal scrollable gallery */
+/* Grille qui passe à la ligne — plus de scroll horizontal. Comme les autres
+   thèmes (et comme la grille vidéo qui marche déjà), les cartes wrappent au
+   lieu de défiler sur le côté : sans conteneur scrollable, plus aucun rognage
+   du glow / de la scale / du pop sur les cartes de bord. */
 .ocean-portfolio__gallery {
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-primary-alpha) transparent;
-  margin: 0 -1.25rem;
-  padding: 0 1.25rem 1rem;
-}
-
-.ocean-portfolio__gallery::-webkit-scrollbar {
-  height: 6px;
-}
-
-.ocean-portfolio__gallery::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.ocean-portfolio__gallery::-webkit-scrollbar-thumb {
-  background: var(--color-primary-alpha);
-  border-radius: 3px;
+  margin-top: 0.5rem;
 }
 
 .ocean-portfolio__track {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
-  padding: 0.5rem 0;
 }
 
 .ocean-portfolio__slide {
-  flex: 0 0 auto;
-  width: 300px;
-  scroll-snap-align: start;
-}
-
-/* Scroll hint */
-.ocean-portfolio__scroll-hint {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  margin: 0.75rem 0 0;
-  color: var(--color-text-muted);
-  font-size: 0.8rem;
-  opacity: 0.6;
-}
-
-.ocean-portfolio__scroll-arrow {
-  font-size: 1rem;
-  animation: ocean-scroll-pulse 1.6s ease-in-out infinite;
-}
-
-@keyframes ocean-scroll-pulse {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 1; }
+  min-width: 0;
 }
 
 /* Video grid */
@@ -551,6 +601,48 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
+}
+
+/* --- Tilt « flottant » des cartes portfolio --- */
+.ocean-tilt {
+  border-radius: var(--radius);
+  transition: box-shadow 0.5s ease;
+  will-change: transform;
+}
+
+.ocean-tilt:hover {
+  box-shadow:
+    0 24px 60px -18px rgba(8, 47, 73, 0.7),
+    0 0 0 1px var(--color-primary-alpha),
+    0 0 45px -8px var(--color-primary-alpha);
+}
+
+/* Reflet caustique qui ondule sous la surface au survol */
+.ocean-tilt::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(120% 80% at 20% 0%, rgba(125, 224, 255, 0.18), transparent 55%),
+    radial-gradient(90% 70% at 90% 100%, rgba(56, 189, 248, 0.14), transparent 60%);
+  background-size: 200% 200%;
+  transition: opacity 0.5s ease;
+  animation: ocean-caustic 7s ease-in-out infinite;
+}
+
+.ocean-tilt:hover::before { opacity: 1; }
+
+@keyframes ocean-caustic {
+  0%, 100% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ocean-tilt::before { animation: none; }
 }
 
 /* ==========================================================================
@@ -954,6 +1046,75 @@
 }
 
 /* ==========================================================================
+   Profondeur — neige marine, plancton bioluminescent, assombrissement abyssal
+   Couche fixe globale, devant le contenu, non interactive.
+   ========================================================================== */
+/* Ancrée au DOCUMENT (toute la hauteur de page), pas au viewport : les
+   particules défilent et passent quand on scrolle → on les traverse. */
+.ocean-depth {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Neige marine : micro-particules pâles réparties sur toute la page,
+   ancrées à leur position, avec une lente dérive sur place. */
+.ocean-depth__snow {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(214, 234, 245, 0.9);
+  filter: blur(0.4px);
+  opacity: 0;
+  animation: ocean-snow-fall var(--duration) var(--delay) linear infinite;
+}
+
+@keyframes ocean-snow-fall {
+  0%   { transform: translate3d(0, 0, 0); opacity: 0; }
+  10%  { opacity: var(--peak, 0.4); }
+  90%  { opacity: var(--peak, 0.4); }
+  100% { transform: translate3d(var(--drift), var(--fall, 18vh), 0); opacity: 0; }
+}
+
+/* Plancton bioluminescent : rares points cyan qui pulsent et remontent un peu */
+.ocean-depth__glow {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(125, 224, 255, 0.95);
+  box-shadow: 0 0 6px 2px rgba(56, 189, 248, 0.55);
+  opacity: 0;
+  animation: ocean-glow-pulse var(--duration) var(--delay) ease-in-out infinite;
+}
+
+@keyframes ocean-glow-pulse {
+  0%, 100% { transform: translateY(0) scale(0.7); opacity: 0.1; }
+  50%      { transform: translateY(calc(var(--bob) * -1px)) scale(1.15); opacity: 0.9; }
+}
+
+/* Assombrissement abyssal : vignette qui se renforce avec le scroll (opacité gérée en JS) */
+.ocean-depth__abyss {
+  position: fixed;
+  inset: 0;
+  z-index: 49;
+  pointer-events: none;
+  background: radial-gradient(
+    120% 100% at 50% 38%,
+    transparent 40%,
+    rgba(1, 9, 22, 0.5) 78%,
+    rgba(1, 6, 16, 0.85) 100%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ocean-depth__snow,
+  .ocean-depth__glow {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
    Responsive — Tablet (768px)
    ========================================================================== */
 @media (min-width: 768px) {
@@ -967,10 +1128,6 @@
   }
 
   /* Portfolio */
-  .ocean-portfolio__slide {
-    width: 340px;
-  }
-
   .ocean-portfolio__video-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1032,10 +1189,6 @@
   /* Portfolio */
   .ocean-portfolio__inner {
     padding: 4rem 2rem 0;
-  }
-
-  .ocean-portfolio__slide {
-    width: 360px;
   }
 
   .ocean-portfolio__video-grid {

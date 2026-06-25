@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import CodeConstellation from './CodeConstellation';
 
 const codeLines = [
   'const developer = {',
@@ -44,6 +45,18 @@ export default function CodeHero() {
 
   return (
     <section className="code-hero" id="home">
+      <CodeConstellation />
+
+      <motion.div
+        className="code-hero__header"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        <h1 className="code-hero__title">{t('hero.title')}</h1>
+        <p className="code-hero__tagline">{t('hero.tagline')}</p>
+      </motion.div>
+
       <div className="code-hero__terminal">
         <div className="code-hero__terminal-bar">
           <span className="code-hero__dot code-hero__dot--red" />
@@ -65,21 +78,17 @@ export default function CodeHero() {
       </div>
 
       <motion.div
-        className="code-hero__content"
+        className="code-hero__actions"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, duration: 0.6 }}
       >
-        <h1 className="code-hero__title">{t('hero.title')}</h1>
-        <p className="code-hero__tagline">{t('hero.tagline')}</p>
-        <div className="code-hero__actions">
-          <Link to="/portfolio" className="code-hero__btn code-hero__btn--primary">
-            <span className="code-hero__btn-prefix">$</span> {t('hero.cta_portfolio')}
-          </Link>
-          <Link to="/contact" className="code-hero__btn code-hero__btn--secondary">
-            <span className="code-hero__btn-prefix">$</span> {t('hero.cta_contact')}
-          </Link>
-        </div>
+        <Link to="/portfolio" className="code-hero__btn code-hero__btn--primary">
+          <span className="code-hero__btn-prefix">$</span> {t('hero.cta_portfolio')}
+        </Link>
+        <Link to="/contact" className="code-hero__btn code-hero__btn--secondary">
+          <span className="code-hero__btn-prefix">$</span> {t('hero.cta_contact')}
+        </Link>
       </motion.div>
     </section>
   );

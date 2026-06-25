@@ -1,0 +1,13 @@
+/* Carte à inclinaison 3D — base neutre, l'habillage vit dans les thèmes */
+.tilt-card {
+  position: relative;
+  border-radius: var(--radius);
+}
+
+.tilt-card__glare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  border-radius: inherit;
+}

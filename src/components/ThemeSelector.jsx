@@ -6,9 +6,9 @@ import { THEMES } from '../context/ThemeContext';
 import './ThemeSelector.css';
 
 const themeOptions = [
-  { key: THEMES.OCEAN, icon: '🌊', angle: 180 },
   { key: THEMES.FUSION, icon: '⚡', angle: 90 },
   { key: THEMES.CODE, icon: '💻', angle: 135 },
+  { key: THEMES.OCEAN, icon: '🌊', angle: 180 },
 ];
 
 const themeLabels = {

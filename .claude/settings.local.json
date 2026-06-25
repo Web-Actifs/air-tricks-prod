@@ -1,6 +1,14 @@
 {
   "permissions": {
-    "allow": [],
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(find . -type d -iname \"*Super2*\")",
+      "Bash(find . -path ./node_modules -prune -o -type d -iname \"*Super2*\" -print)",
+      "Bash(grep -nA6 -i \"matrix\" style.css index.html)",
+      "Bash(awk '/\\\\.code-\\(portfolio|services|about|contact|footer\\)\\\\b[^_-]*\\\\{/{f=1;name=$0} f&&/background/{print name\" -> \"$0} f&&/\\\\}/{f=0}' src/themes/code/code.css)",
+      "Bash(awk '/\\\\[data-theme=\"code\"\\\\] body/{f=1} f{print} f&&/\\\\}/{exit}' src/themes/code/code.css)",
+      "Bash(git add *)"
+    ],
     "deny": []
   }
 }

@@ -1,5 +1,116 @@
 # CLAUDE.md
 
+# MAJ 14/05/2026:
+# Air Tricks Prod — Claude Code Instructions
+
+## Stack technique
+- existant
+- Sélecteur de Vent (wind rose) comme switcher de thème
+
+---
+
+## Design Philosophy — ZERO COMPROMIS
+
+Tu travailles sur le portfolio d'un développeur/vidéaste/kitesurfeur.
+Ce site doit être **inoubliable**. Pas "propre". Pas "professionnel au sens générique".
+**Inoubliable.**
+
+Chaque composant, chaque page doit donner l'impression d'avoir été designée
+par quelqu'un d'obsessionnel qui ne dort pas la nuit tant que ce n'est pas parfait.
+
+---
+
+## Ce que tu NE FAIS JAMAIS
+
+- Police Inter, Roboto, Arial, system-ui → **JAMAIS**
+- Gradient violet/blanc ou bleu/violet → poubelle immédiate
+- Layout card-grid 3 colonnes identiques → trop vu, trop mort
+- Boutons CTA arrondis génériques avec ombre portée douce → non
+- Hero section avec titre centré + sous-titre + bouton → le cliché absolu
+- Couleurs "safe" distribuées uniformément → sans personnalité
+- Animations de fade-in basiques au scroll → le minimum syndical
+
+---
+
+## Ce que tu FAIS TOUJOURS
+
+### Typographie
+- Une font display mémorable, avec du caractère (cherche dans Google Fonts : 
+  Clash Display, Cabinet Grotesk, Satoshi, Syne, Bebas Neue, Editorial New...)
+- Une font body raffinée qui contraste avec la display
+- Tailles agressives : les titres prennent de la place, ils dominent
+- Line-height et letter-spacing travaillés au millimètre
+
+### Couleur
+- CSS variables systématiques (`--color-primary`, `--color-accent`, etc.)
+- Une couleur dominante forte + un accent qui tranche
+- Le thème Ocean : bleus profonds, cyans électriques, noir quasi-total
+- Le thème Code : vert terminal, noir anthracite, accents amber/orange
+- Le thème Fusion : entre les deux, quelque chose d'inattendu
+- Jamais de palette timide. Les couleurs s'assument.
+
+### Layout & Composition
+- Asymétrie intentionnelle
+- Éléments qui se chevauchent (z-index comme outil créatif)
+- Grilles qui se cassent là où on ne s'y attend pas
+- Espaces négatifs généreux OU densité maîtrisée — choisir un camp
+- Diagonales, rotations subtiles, éléments hors-grille
+- Le wind rose comme élément graphique récurrent, pas juste un switcher
+
+### Animations & Motion
+- Une entrée de page orchestrée : staggered reveals avec animation-delay
+- Hover states qui surprennent (pas juste opacity: 0.8)
+- CSS-first pour tout ce qui peut l'être
+- Motion library (Framer Motion) pour les transitions complexes
+- Le curseur peut être customisé si ça sert le concept
+- Scroll-triggered animations sur les sections clés
+
+### Atmosphère & Détails
+- Backgrounds avec profondeur : gradients mesh, noise texture, layered transparencies
+- Ombres dramatiques ou pas d'ombres du tout — pas de demi-mesure
+- Le grain overlay utilisé avec parcimonie mais présent
+- Chaque section a une identité visuelle propre dans la cohérence globale
+
+---
+
+## Projets à mettre en valeur
+
+Six sites réels :
+- **bilenekite.com** — Kitesurfing center, Mozambique, lagoon, kite lifestyle
+- **lapoumerole.org** — Association, Ventoux region
+- **vetisol.com** — B2B, Next.js/Vercel, multilingual
+- **Casa du Ventoux** — Hébergement, Provence
+- **OhMyFood** — Projet formation (UX/UI, animations CSS)
+- **Reservia** — Projet formation (HTML/CSS pur)
+
+Trois productions YouTube kitesurf (vidéo/drone).
+
+Ces projets ne sont pas juste des "cartes" dans une grille.
+Chaque projet mérite une présentation qui raconte une histoire.
+
+---
+
+## Contexte créateur
+
+Guillaume = développeur web + vidéaste kitesurf + network engineer 15 ans + drone
+Base France / Mozambique saisonnier
+Ce portfolio doit incarner cette dualité : technique rigoureuse ET liberté créative
+
+---
+
+## Quand tu génères du code
+
+1. **Pense d'abord au concept** — quelle direction esthétique pour CE composant ?
+2. **Engage-toi** — pas de "ça pourrait être..." → une direction claire, assumée
+3. **Exécute à fond** — le code doit être à la hauteur de la vision
+4. **Détaille les choix** — explique pourquoi cette font, cette couleur, ce layout
+
+Si tu te retrouves à écrire quelque chose de générique, arrête-toi et recommence.
+Le bar est haut. Montre ce que tu sais vraiment faire.
+
+
+## tout ce qui était avant
+
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Langue
@@ -33,6 +144,8 @@ Le site propose 3 designs **complets** (layout + style différents) avec switch 
 - **Ocean** : cinématique, kitesurf, glassmorphism nav, vagues SVG
 - **Code** : IDE/terminal, sidebar nav fixe (72px → 220px au hover), fond sombre, néon vert/violet
 - **Fusion** : hybride audacieux, split-screen hero, bento grid, gradient cyan/violet
+
+> Un 4e thème **"press"** (style vieux journal) a été tenté puis **abandonné/supprimé** (rendu insatisfaisant). Ne pas le recréer. On reste sur 3 thèmes.
 
 Chaque thème a ses fichiers dans `src/themes/{ocean,code,fusion}/` :
 - `*Layout.jsx` — navigation et layout spécifique au thème (reçoit `{children}`, PAS `<Outlet />`)
