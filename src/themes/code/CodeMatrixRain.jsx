@@ -55,11 +55,11 @@ export default function CodeMatrixRain({ pathname }) {
       }
     }
 
-    // Mode one-page : on a un hero + une section Portfolio → fondu au scroll.
-    // Sinon (routes séparées) : affichage direct, pleine opacité.
-    const hero = document.querySelector('.code-hero');
-    const anchor = document.querySelector('.code-portfolio');
-    const scrollFade = Boolean(hero && anchor);
+    // Home one-page : fondu au scroll à partir du Portfolio. Routes séparées :
+    // affichage direct. On se base sur la ROUTE (et non sur une query DOM) car
+    // les sections sont lazy-load et pas forcément présentes au montage.
+    const isHome = pathname === '/';
+    let anchor = null;
 
     let raf = null;
     let frame = 0;
@@ -73,10 +73,14 @@ export default function CodeMatrixRain({ pathname }) {
     const stopLoop = () => { if (raf) { cancelAnimationFrame(raf); raf = null; } };
 
     function applyOpacity() {
-      if (!scrollFade) {
+      if (!isHome) {
         canvas.style.opacity = String(MAX);
+        startLoop();
         return;
       }
+      // Section Portfolio en lazy-load : tant qu'absente → invisible
+      if (!anchor) anchor = document.querySelector('.code-portfolio');
+      if (!anchor) { canvas.style.opacity = '0'; stopLoop(); return; }
       // Fondu : 0 quand Portfolio est sous le pli, plein quand il est à ~40% du haut
       const top = anchor.getBoundingClientRect().top;
       const ih = window.innerHeight;
@@ -88,7 +92,6 @@ export default function CodeMatrixRain({ pathname }) {
 
     setup();
     applyOpacity();
-    if (!scrollFade) startLoop(); // routes séparées : tourne en continu
 
     const onScroll = () => applyOpacity();
     window.addEventListener('scroll', onScroll, { passive: true });

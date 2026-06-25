@@ -1,3 +1,6 @@
+/* ---------- Google Fonts import (doit précéder toute autre règle CSS) ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Lato:wght@300;400;700;900&display=swap');
+
 /* ==========================================================================
    Ocean Theme — Air Tricks Prod
    Cinematic, fluid, immersive — the kitesurf & video universe.
@@ -32,9 +35,6 @@
   --ocean-deep:          #061220;
   --ocean-nav-h:         64px;
 }
-
-/* ---------- Google Fonts import ---------- */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Lato:wght@300;400;700;900&display=swap');
 
 /* ==========================================================================
    Layout

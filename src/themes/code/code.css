@@ -1,3 +1,6 @@
+/* --- Font imports (doit précéder toute autre règle CSS) --- */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
 /* ============================================================
    CODE THEME — Tech, sharp, nocturnal
    ============================================================ */
@@ -25,9 +28,6 @@
   --code-number: #f78c6c;
   --code-key: #00d4ff;
 }
-
-/* --- Font imports --- */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 /* ============================================================
    GLOBAL RESET for Code theme
