@@ -1,17 +1,19 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const STACK_ITEMS = [
-  'React', 'Vite', 'JavaScript', 'HTML/CSS', 'Sass',
-  'Tailwind', 'Node.js', 'Git', 'Figma', 'Responsive',
+  'HTML5', 'CSS3/Sass', 'JavaScript', 'React', 'Vite',
+  'Framer Motion', 'Tailwind', 'Astro.js', 'Node.js', 'Git',
+  'Figma', 'Premiere Pro', 'Responsive', 'SEO',
 ];
 
 const SERVICES = [
-  { key: 'web_creation', icon: 'globe' },
-  { key: 'integration', icon: 'code' },
-  { key: 'redesign', icon: 'refresh' },
-  { key: 'maintenance', icon: 'wrench' },
-  { key: 'optimization', icon: 'zap' },
+  { key: 'web_creation', icon: 'globe'   },
+  { key: 'integration',  icon: 'code'    },
+  { key: 'redesign',     icon: 'refresh' },
+  { key: 'maintenance',  icon: 'wrench'  },
+  { key: 'optimization', icon: 'zap'     },
 ];
 
 function ServiceIcon({ type }) {
@@ -47,25 +49,19 @@ function ServiceIcon({ type }) {
       </svg>
     ),
   };
-
   return <span className="fusion-services__icon">{icons[type]}</span>;
 }
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] },
-  }),
-};
-
 export default function FusionServices() {
   const { t } = useTranslation();
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  const ownershipItems = t('services.ownership_items').split(/\s*·\s*/);
 
   return (
     <section className="fusion-services">
       <div className="fusion-services__container">
+
         <motion.div
           className="fusion-services__header"
           initial={{ opacity: 0, y: 30 }}
@@ -77,123 +73,143 @@ export default function FusionServices() {
           <p className="fusion-services__subtitle">{t('services.subtitle')}</p>
         </motion.div>
 
-        {/* Asymmetric bento grid for services */}
-        <div className="fusion-services__bento">
-          {SERVICES.map(({ key, icon }, index) => (
-            <motion.article
-              key={key}
-              className={`fusion-services__card fusion-services__card--${index + 1}`}
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              custom={index}
-              whileHover={{ y: -4 }}
-            >
-              <div className="fusion-services__card-border" aria-hidden="true" />
-              <div className="fusion-services__card-inner">
-                <ServiceIcon type={icon} />
-                <h3 className="fusion-services__card-title">
-                  {t(`services.${key}`)}
-                </h3>
-                <p className="fusion-services__card-desc">
-                  {t(`services.${key}_desc`)}
-                </p>
-              </div>
-              {/* Geometric decoration */}
-              <div className="fusion-services__card-deco" aria-hidden="true" />
-            </motion.article>
-          ))}
+        {/* ── 2-column asymmetric layout ── */}
+        <div className="fusion-services__layout">
 
-          {/* Tech stack card — spans wider */}
-          <motion.article
-            className="fusion-services__card fusion-services__card--stack"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-          >
-            <div className="fusion-services__card-border" aria-hidden="true" />
-            <div className="fusion-services__card-inner">
-              <h3 className="fusion-services__card-title">
-                {t('services.stack_title')}
-              </h3>
-              <div className="fusion-services__stack-tags">
-                {STACK_ITEMS.map((tech, i) => (
-                  <motion.span
-                    key={tech}
-                    className="fusion-services__stack-tag"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.4 + i * 0.05 }}
-                    whileHover={{ scale: 1.1 }}
-                  >
-                    {tech}
-                  </motion.span>
-                ))}
-              </div>
-            </div>
-          </motion.article>
-
-          {/* Creative edge */}
-          <motion.article
-            className="fusion-services__card fusion-services__card--creative"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-          >
-            <div className="fusion-services__card-border" aria-hidden="true" />
-            <div className="fusion-services__card-inner">
-              <h3 className="fusion-services__card-title">
-                {t('services.creative_title')}
-              </h3>
-              <p className="fusion-services__card-desc">
-                {t('services.creative_desc')}
-              </p>
-              {/* Organic wave decoration */}
-              <svg
-                className="fusion-services__organic-deco"
-                viewBox="0 0 200 60"
-                aria-hidden="true"
+          {/* Left: expandable service accordion */}
+          <div className="fusion-services__left">
+            {SERVICES.map(({ key, icon }, i) => (
+              <motion.div
+                key={key}
+                className={`fusion-item${activeIdx === i ? ' fusion-item--open' : ''}`}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.07, duration: 0.4 }}
+                onClick={() => setActiveIdx(activeIdx === i ? null : i)}
               >
-                <path
-                  d="M0,30 Q50,0 100,30 Q150,60 200,30"
-                  fill="none"
-                  stroke="var(--color-primary)"
-                  strokeWidth="2"
-                  opacity="0.3"
-                />
-              </svg>
-            </div>
-          </motion.article>
+                <div className="fusion-item__header">
+                  <ServiceIcon type={icon} />
+                  <h3 className="fusion-item__title">{t(`services.${key}`)}</h3>
+                  <span className="fusion-item__toggle" aria-hidden="true">
+                    {activeIdx === i ? '−' : '+'}
+                  </span>
+                </div>
+                <AnimatePresence initial={false}>
+                  {activeIdx === i && (
+                    <motion.div
+                      className="fusion-item__body"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    >
+                      <p className="fusion-item__desc">{t(`services.${key}_desc`)}</p>
+                      <span className="fusion-item__ai-tag">✦ {t('services.ai_badge')}</span>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+          </div>
 
-          {/* Technical background */}
-          <motion.article
-            className="fusion-services__card fusion-services__card--network"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+          {/* Right: sticky identity column */}
+          <motion.div
+            className="fusion-services__right"
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.5, duration: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="fusion-services__card-border" aria-hidden="true" />
-            <div className="fusion-services__card-inner">
-              <h3 className="fusion-services__card-title">
-                {t('services.network_title')}
-              </h3>
-              <p className="fusion-services__card-desc">
-                {t('services.network_desc')}
-              </p>
-              {/* Geometric grid decoration */}
-              <div className="fusion-services__grid-deco" aria-hidden="true">
-                {Array.from({ length: 9 }).map((_, i) => (
-                  <span key={i} className="fusion-services__grid-dot" />
-                ))}
+            <div className="fusion-identity">
+
+              <div className="fusion-identity__block fusion-identity__block--ai">
+                <span className="fusion-identity__label">
+                  <span className="fusion-identity__dot fusion-identity__dot--ai" />
+                  IA co-pilote
+                </span>
+                <p className="fusion-identity__value">Claude Code</p>
+                <p className="fusion-identity__sub">{t('services.ai_desc')}</p>
               </div>
+
+              <div className="fusion-identity__block fusion-identity__block--az">
+                <span className="fusion-identity__label">
+                  <span className="fusion-identity__dot fusion-identity__dot--az" />
+                  {t('services.az_title')}
+                </span>
+                <ul className="fusion-identity__list">
+                  {ownershipItems.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="fusion-identity__block fusion-identity__block--seo">
+                <span className="fusion-identity__label">
+                  <span className="fusion-identity__dot fusion-identity__dot--seo" />
+                  SEO + GEO
+                </span>
+                <p className="fusion-identity__sub">
+                  {t('services.seo_human_title')}.<br />
+                  {t('services.seo_geo_title')}.
+                </p>
+                <span className="fusion-identity__geo-badge">{t('services.seo_geo_label')}</span>
+              </div>
+
             </div>
-          </motion.article>
+          </motion.div>
         </div>
+
+        {/* ── Stack ── */}
+        <motion.div
+          className="fusion-services__stack-section"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h3 className="fusion-services__stack-heading">{t('services.stack_title')}</h3>
+          <div className="fusion-services__stack-tags">
+            {STACK_ITEMS.map((tech, i) => (
+              <motion.span
+                key={tech}
+                className="fusion-services__stack-tag"
+                initial={{ opacity: 0, scale: 0.85 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 + i * 0.04 }}
+                whileHover={{ scale: 1.08 }}
+              >
+                {tech}
+              </motion.span>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* ── SEO / GEO full split ── */}
+        <motion.div
+          className="fusion-seo-split"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          <div className="fusion-seo__col fusion-seo__col--human">
+            <h3 className="fusion-seo__col-title">{t('services.seo_human_title')}</h3>
+            <p className="fusion-seo__col-desc">{t('services.seo_human_desc')}</p>
+          </div>
+          <div className="fusion-seo__sep" aria-hidden="true">
+            <div className="fusion-seo__sep-line" />
+            <span className="fusion-seo__sep-label">SEO ↔ GEO</span>
+            <div className="fusion-seo__sep-line" />
+          </div>
+          <div className="fusion-seo__col fusion-seo__col--geo">
+            <h3 className="fusion-seo__col-title">{t('services.seo_geo_title')}</h3>
+            <p className="fusion-seo__col-desc">{t('services.seo_geo_desc')}</p>
+            <span className="fusion-seo__geo-badge">{t('services.seo_geo_label')}</span>
+          </div>
+        </motion.div>
+
       </div>
     </section>
   );

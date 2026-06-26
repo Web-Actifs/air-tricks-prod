@@ -1,0 +1,33 @@
+# Air Tricks Prod — robots.txt
+# https://airtricksprod.fr
+
+User-agent: *
+Allow: /
+Disallow: /dist/
+
+# ── Crawlers LLM explicitement autorisés ──
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Gemini-bot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+Sitemap: https://airtricksprod.fr/sitemap.xml

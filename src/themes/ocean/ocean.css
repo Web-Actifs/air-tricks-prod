@@ -1242,6 +1242,254 @@
   color: var(--color-primary);
 }
 
+/* ==========================================================================
+   Services — A-Z Timeline
+   ========================================================================== */
+.ocean-services__az {
+  margin-bottom: 4rem;
+}
+
+.ocean-az__header {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.ocean-az__tag {
+  display: inline-block;
+  padding: 0.28rem 0.9rem;
+  background: rgba(45, 212, 191, 0.1);
+  border: 1px solid rgba(45, 212, 191, 0.3);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ocean-turquoise);
+  white-space: nowrap;
+}
+
+.ocean-az__subtitle {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.ocean-az__track {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.25rem;
+}
+
+.ocean-az__rail {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary),
+    rgba(45, 212, 191, 0.15) 50%,
+    var(--color-primary)
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.ocean-az__step {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.ocean-az__step-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #0a0e1a;
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+  box-shadow: 0 0 18px rgba(45, 212, 191, 0.35);
+}
+
+.ocean-az__step-body {
+  text-align: center;
+  padding: 0 0.35rem;
+}
+
+.ocean-az__step-title {
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 0.3rem;
+}
+
+.ocean-az__step-desc {
+  font-size: 0.73rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+  margin: 0 0 0.5rem;
+}
+
+.ocean-az__ai-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: 999px;
+  padding: 0.12rem 0.5rem;
+  letter-spacing: 0.04em;
+}
+
+/* ==========================================================================
+   Services — SEO/GEO Split
+   ========================================================================== */
+.ocean-seo-split {
+  display: flex;
+  align-items: stretch;
+  margin: 0 0 4rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.ocean-seo-split__col {
+  flex: 1;
+  padding: 2.5rem 2rem;
+}
+
+.ocean-seo-split__col--human {
+  background: rgba(14, 165, 233, 0.04);
+}
+
+.ocean-seo-split__col--geo {
+  background: rgba(45, 212, 191, 0.06);
+}
+
+.ocean-seo-split__icon {
+  font-size: 1.6rem;
+  color: var(--color-primary);
+  opacity: 0.65;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.ocean-seo-split__col-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 0.65rem;
+}
+
+.ocean-seo-split__col-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin: 0 0 1rem;
+}
+
+.ocean-seo-split__geo-badge {
+  display: inline-block;
+  padding: 0.28rem 0.8rem;
+  background: rgba(45, 212, 191, 0.1);
+  border: 1px solid rgba(45, 212, 191, 0.3);
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--ocean-turquoise);
+  letter-spacing: 0.04em;
+}
+
+.ocean-seo-split__divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  flex-shrink: 0;
+  gap: 0.6rem;
+  background: rgba(45, 212, 191, 0.03);
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+  padding: 2rem 0;
+}
+
+.ocean-seo-split__divider-line {
+  flex: 1;
+  width: 1px;
+  min-height: 24px;
+  background: linear-gradient(180deg, transparent, var(--color-primary), transparent);
+}
+
+.ocean-seo-split__divider-label {
+  font-family: var(--font-heading);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-primary);
+  writing-mode: vertical-rl;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Responsive for new sections */
+@media (max-width: 900px) {
+  .ocean-az__track {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    justify-content: initial;
+  }
+  .ocean-az__rail { display: none; }
+}
+
+@media (max-width: 600px) {
+  .ocean-az__track {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ocean-seo-split {
+    flex-direction: column;
+  }
+  .ocean-seo-split__divider {
+    flex-direction: row;
+    width: 100%;
+    padding: 1rem 2rem;
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .ocean-seo-split__divider-line {
+    flex: 1;
+    width: auto;
+    height: 1px;
+    min-height: unset;
+    background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  }
+  .ocean-seo-split__divider-label {
+    writing-mode: horizontal-tb;
+  }
+}
+
 [data-theme="ocean"] .project-card__link:hover {
   color: var(--ocean-turquoise);
 }

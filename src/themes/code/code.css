@@ -1710,6 +1710,207 @@
 }
 
 /* ============================================================
+   SERVICES — Terminal manifest header
+   ============================================================ */
+.code-services__manifest {
+  background: #0a0a10;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 56px;
+}
+
+.code-services__manifest-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  background: #111118;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.code-services__manifest-title {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  margin-left: 8px;
+}
+
+.code-services__manifest-body {
+  padding: 20px 24px 24px;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  line-height: 1.9;
+}
+
+.code-services__manifest-cmd {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.code-services__manifest-prompt {
+  color: var(--color-primary);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.code-services__manifest-cmd-text {
+  color: var(--color-text);
+  letter-spacing: 0.01em;
+}
+
+.code-services__manifest-line {
+  padding-left: 18px;
+}
+
+.code-services__manifest-line--muted {
+  color: var(--color-text-muted);
+}
+
+.code-services__manifest-line--success {
+  color: var(--color-primary);
+}
+
+.code-services__manifest-line--info {
+  color: var(--color-text-muted);
+}
+
+.code-services__manifest-hl {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+/* AI badge in service card header */
+.code-services__card-ai-badge {
+  margin-left: auto;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  background: rgba(139, 92, 246, 0.12);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  border-radius: 3px;
+  padding: 1px 6px;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   SERVICES — AI + Infrastructure cards
+   ============================================================ */
+.code-services__infra {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.code-services__infra-card {
+  background: #0d0d14;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.code-services__infra-card--ai:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.1);
+}
+
+.code-services__infra-card--az:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.08);
+}
+
+/* ============================================================
+   SERVICES — SEO/GEO Terminal split
+   ============================================================ */
+.code-services__seo {
+  background: #0a0a10;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+
+.code-services__seo-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  background: #111118;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.code-services__seo-cols {
+  display: flex;
+  gap: 0;
+}
+
+.code-services__seo-col {
+  flex: 1;
+  padding: 24px;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  line-height: 1.7;
+}
+
+.code-services__seo-col:first-child {
+  border-right: 1px solid var(--color-border);
+}
+
+.code-services__seo-label {
+  margin: 0 0 6px;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+}
+
+.code-services__seo-title {
+  margin: 0 0 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.code-services__seo-desc {
+  font-family: var(--font-body);
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  line-height: 1.65;
+  margin: 0 0 12px;
+}
+
+.code-services__seo-geo-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--color-cyan);
+  background: rgba(0, 212, 255, 0.08);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 3px;
+  padding: 2px 8px;
+  letter-spacing: 0.04em;
+}
+
+.code-services__seo-separator {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .code-services__seo-cols {
+    flex-direction: column;
+  }
+  .code-services__seo-col:first-child {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .code-services__infra {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
    SCROLLBAR STYLING (Code theme)
    ============================================================ */
 [data-theme="code"] ::-webkit-scrollbar {
