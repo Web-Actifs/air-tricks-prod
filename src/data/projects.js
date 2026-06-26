@@ -1,3 +1,9 @@
+import arthurImage from '../assets/images/Arthur.jpg';
+import bilenImage from '../assets/images/BilenKite.jpg';
+import poumeroleImage from '../assets/images/Poumerole.JPG';
+import vetsolImage from '../assets/images/vetisol.jpg';
+import rejoiceImage from '../assets/images/Rejoice.JPG';
+
 const screenshot = (url) =>
   `https://api.microlink.io?url=${encodeURIComponent(url)}&screenshot=true&meta=false&embed=screenshot.url`;
 
@@ -6,7 +12,7 @@ export const webProjects = [
     id: 'bilene-kite',
     title: 'Bilene Kite Center',
     url: 'https://bilenekite.com',
-    image: screenshot('https://bilenekite.com'),
+    image: bilenImage,
     category: 'web',
     stack: ['HTML/CSS', 'JavaScript', 'WebP', 'Multilingue'],
     description: {
@@ -18,7 +24,7 @@ export const webProjects = [
     id: 'la-poumerole',
     title: 'La Poumerole',
     url: 'https://www.lapoumerole.org',
-    image: screenshot('https://www.lapoumerole.org'),
+    image: poumeroleImage,
     category: 'web',
     stack: ['HTML/CSS', 'JavaScript', 'Responsive', 'Bilingue'],
     description: {
@@ -30,12 +36,24 @@ export const webProjects = [
     id: 'vetisol',
     title: 'Vetisol',
     url: 'https://www.vetisol.com',
-    image: screenshot('https://www.vetisol.com'),
+    image: vetsolImage,
     category: 'web',
     stack: ['Framework moderne', 'Vercel', 'Trilingue', 'Carte interactive'],
     description: {
       fr: "Site corporate trilingue (FR/EN/DE) pour un spécialiste des façades ventilées. 30 ans d'expertise, réalisations prestigieuses dont le Louvre, documentation technique et carte interactive des délégués.",
       en: 'Trilingual corporate website (FR/EN/DE) for a ventilated facade specialist. 30 years of expertise, prestigious achievements including the Louvre, technical documentation and interactive delegate map.',
+    },
+  },
+  {
+    id: 'rejoice',
+    title: 'Rejoice',
+    url: 'https://rejoice.ngo/',
+    image: rejoiceImage,
+    category: 'web',
+    stack: ['HTML', 'CSS', 'JavaScript', 'Responsive', 'Multilingue'],
+    description: {
+      fr: "Site de l'association Rejoice, combinant bien-être personnel et aide humanitaire. Financement de projets pour l'enfance en Inde et Népal grâce aux séjours transformationnels. Identité minimaliste, témoignages authentiques, impact mesurable : 200+ enfants accompagnés.",
+      en: 'Website for Rejoice association, combining personal wellness and international humanitarian aid. Funding childhood projects in India and Nepal through transformational retreats. Minimalist identity, authentic testimonials, measurable impact: 200+ children supported.',
     },
   },
   {
@@ -74,6 +92,18 @@ export const webProjects = [
     description: {
       fr: "Projet de formation — plateforme de réservation d'hébergements à Marseille. Intégration pixel-perfect, système de filtres, grille responsive avec Flexbox et Grid.",
       en: 'Training project — accommodation booking platform in Marseille. Pixel-perfect integration, filter system, responsive grid with Flexbox and Grid.',
+    },
+  },
+  {
+    id: 'arthur-reynaud',
+    title: 'Arthur Reynaud-Chanon',
+    url: 'https://arthur-reynaud-chanon.be/',
+    image: arthurImage,
+    category: 'web',
+    stack: ['HTML/CSS', 'JavaScript', 'Responsive', 'Multilingue'],
+    description: {
+      fr: "Cabinet de cours de musique basé à Bruxelles. Clarinette, saxophone et formation musicale avec approche pédagogique humaniste centrée sur le souffle, l'oreille et la théorie. Parcours international (France, Pologne, Belgique), témoignages d'élèves authentiques.",
+      en: 'Music teaching studio based in Brussels. Clarinet, saxophone and music theory with humanistic pedagogy centered on breath, ear training and music theory. International background (France, Poland, Belgium), authentic student testimonials.',
     },
   },
 ];
