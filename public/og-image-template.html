@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>OG Image — Air Tricks Prod</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      background: #040d1a;
+    }
+
+    .og {
+      width: 1200px;
+      height: 630px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding: 0 90px;
+      background:
+        radial-gradient(ellipse 80% 80% at 70% 50%, rgba(6, 100, 160, 0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 60% at 10% 80%, rgba(6, 182, 212, 0.08) 0%, transparent 50%),
+        #040d1a;
+    }
+
+    /* Cercles décoratifs */
+    .ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(6, 182, 212, 0.12);
+    }
+    .ring-1 { right: 120px; top: 50%; transform: translateY(-50%); width: 420px; height: 420px; }
+    .ring-2 { right: 160px; top: 50%; transform: translateY(-50%); width: 300px; height: 300px; border-color: rgba(6, 182, 212, 0.2); }
+    .ring-3 { right: 200px; top: 50%; transform: translateY(-50%); width: 180px; height: 180px; border-color: rgba(6, 182, 212, 0.35); }
+
+    /* Lignes de rose des vents */
+    .compass {
+      position: absolute;
+      right: 130px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 400px;
+      height: 400px;
+    }
+
+    /* Ligne de séparation gauche */
+    .divider {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent, #06b6d4 30%, #06b6d4 70%, transparent);
+    }
+
+    /* Grain overlay */
+    .grain {
+      position: absolute;
+      inset: 0;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 200px;
+    }
+
+    /* Contenu */
+    .content {
+      position: relative;
+      z-index: 2;
+      max-width: 640px;
+    }
+
+    .label {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      font-size: 13px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #06b6d4;
+      margin-bottom: 28px;
+    }
+
+    .title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 800;
+      font-size: 78px;
+      line-height: 1.0;
+      color: #f0f6ff;
+      margin-bottom: 8px;
+      letter-spacing: -1px;
+    }
+
+    .title em {
+      font-style: italic;
+      color: #06b6d4;
+    }
+
+    .subtitle {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      font-size: 20px;
+      color: rgba(176, 210, 240, 0.75);
+      margin-top: 20px;
+      line-height: 1.5;
+      max-width: 520px;
+    }
+
+    .tags {
+      display: flex;
+      gap: 10px;
+      margin-top: 36px;
+    }
+
+    .tag {
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(6, 182, 212, 0.8);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      padding: 6px 14px;
+      border-radius: 2px;
+    }
+
+    .url {
+      position: absolute;
+      bottom: 44px;
+      left: 90px;
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      letter-spacing: 2px;
+      color: rgba(176, 210, 240, 0.4);
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+  <div class="og">
+    <div class="grain"></div>
+    <div class="divider"></div>
+
+    <!-- Cercles décoratifs (rose des vents) -->
+    <div class="ring ring-1"></div>
+    <div class="ring ring-2"></div>
+    <div class="ring ring-3"></div>
+
+    <!-- Lignes de la rose des vents -->
+    <svg class="compass" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Axes cardinaux -->
+      <line x1="200" y1="0" x2="200" y2="400" stroke="rgba(6,182,212,0.15)" stroke-width="1"/>
+      <line x1="0" y1="200" x2="400" y2="200" stroke="rgba(6,182,212,0.15)" stroke-width="1"/>
+      <!-- Axes diagonaux -->
+      <line x1="0" y1="0" x2="400" y2="400" stroke="rgba(6,182,212,0.08)" stroke-width="1"/>
+      <line x1="400" y1="0" x2="0" y2="400" stroke="rgba(6,182,212,0.08)" stroke-width="1"/>
+      <!-- Point nord accentué -->
+      <polygon points="200,60 192,115 200,108 208,115" fill="#06b6d4" opacity="0.7"/>
+      <!-- Petit centre -->
+      <circle cx="200" cy="200" r="5" fill="#06b6d4" opacity="0.5"/>
+      <circle cx="200" cy="200" r="2" fill="#06b6d4" opacity="1"/>
+    </svg>
+
+    <!-- Texte -->
+    <div class="content">
+      <div class="label">Portfolio — Développeur Web Freelance</div>
+      <h1 class="title">Air Tricks<br><em>Prod</em></h1>
+      <p class="subtitle">Sites vitrines, refonte, SEO & GEO — de l'idée au live.</p>
+      <div class="tags">
+        <span class="tag">React</span>
+        <span class="tag">Vite</span>
+        <span class="tag">Design</span>
+        <span class="tag">Infrastructure</span>
+      </div>
+    </div>
+
+    <div class="url">airtricksprod.fr</div>
+  </div>
+</body>
+</html>
