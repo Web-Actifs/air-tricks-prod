@@ -1,17 +1,12 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { useContactForm } from '../../hooks/useContactForm';
 
 export default function FusionContact() {
   const { t } = useTranslation();
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const { formData, status, handleChange, handleSubmit } = useContactForm();
   const [focused, setFocused] = useState(null);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(t('contact.success'));
-    setForm({ name: '', email: '', message: '' });
-  };
 
   const fields = [
     { name: 'name', type: 'text', label: t('contact.name') },
@@ -33,44 +28,64 @@ export default function FusionContact() {
         {fields.map(({ name, type, label }) => (
           <div key={name} className="fusion-contact__field">
             <input
+              id={`fusion-${name}`}
               type={type}
-              value={form[name]}
-              onChange={(e) => setForm({ ...form, [name]: e.target.value })}
+              name={name}
+              value={formData[name]}
+              onChange={handleChange}
               onFocus={() => setFocused(name)}
               onBlur={() => setFocused(null)}
               placeholder=" "
               required
-              id={`fusion-${name}`}
+              autoComplete={name}
             />
             <label
               htmlFor={`fusion-${name}`}
-              className={focused === name || form[name] ? 'floating' : ''}
+              className={focused === name || formData[name] ? 'floating' : ''}
             >
               {label}
             </label>
           </div>
         ))}
+
         <div className="fusion-contact__field">
           <textarea
-            value={form.message}
-            onChange={(e) => setForm({ ...form, message: e.target.value })}
+            id="fusion-message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
             onFocus={() => setFocused('message')}
             onBlur={() => setFocused(null)}
             placeholder=" "
             required
             rows={5}
-            id="fusion-message"
           />
           <label
             htmlFor="fusion-message"
-            className={focused === 'message' || form.message ? 'floating' : ''}
+            className={focused === 'message' || formData.message ? 'floating' : ''}
           >
             {t('contact.message')}
           </label>
         </div>
-        <button type="submit" className="fusion-contact__submit">
-          {t('contact.send')}
+
+        <button
+          type="submit"
+          className="fusion-contact__submit"
+          disabled={status === 'sending'}
+        >
+          {status === 'sending' ? t('contact.sending') : t('contact.send')}
         </button>
+
+        {status === 'success' && (
+          <p className="fusion-contact__status fusion-contact__status--success">
+            {t('contact.success')}
+          </p>
+        )}
+        {status === 'error' && (
+          <p className="fusion-contact__status fusion-contact__status--error">
+            {t('contact.error')}
+          </p>
+        )}
       </motion.form>
     </section>
   );

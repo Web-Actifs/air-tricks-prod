@@ -81,6 +81,7 @@
     "email": "Email",
     "message": "Message",
     "send": "Envoyer",
+    "sending": "Envoi en cours...",
     "success": "Message envoyé avec succès !",
     "error": "Une erreur est survenue. Veuillez réessayer."
   },

@@ -1,31 +1,13 @@
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { useContactForm } from '../../hooks/useContactForm';
 
 export default function OceanContact() {
   const { t } = useTranslation();
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [status, setStatus] = useState(null); // 'success' | 'error' | null
-
-  const handleChange = (e) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // TODO: wire to backend / email service
-    try {
-      // Simulate success
-      setStatus('success');
-      setFormData({ name: '', email: '', message: '' });
-    } catch {
-      setStatus('error');
-    }
-  };
+  const { formData, status, handleChange, handleSubmit } = useContactForm();
 
   return (
     <section className="ocean-contact">
-      {/* Decorative wave top */}
       <div className="ocean-wave-divider" aria-hidden="true">
         <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
           <path
@@ -110,8 +92,12 @@ export default function OceanContact() {
             />
           </div>
 
-          <button type="submit" className="ocean-btn ocean-btn--primary ocean-btn--full">
-            {t('contact.send')}
+          <button
+            type="submit"
+            className="ocean-btn ocean-btn--primary ocean-btn--full"
+            disabled={status === 'sending'}
+          >
+            {status === 'sending' ? t('contact.sending') : t('contact.send')}
           </button>
 
           {status === 'success' && (
@@ -127,7 +113,6 @@ export default function OceanContact() {
         </motion.form>
       </div>
 
-      {/* Decorative wave bottom */}
       <div className="ocean-wave-divider ocean-wave-divider--bottom" aria-hidden="true">
         <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
           <path
