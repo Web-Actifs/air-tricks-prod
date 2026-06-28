@@ -85,6 +85,52 @@
     "success": "Message sent successfully!",
     "error": "An error occurred. Please try again."
   },
+  "faq": {
+    "title": "FAQ",
+    "subtitle": "Everything you need to know before starting a project.",
+    "items": [
+      {
+        "q": "How much does a showcase website cost?",
+        "a": "A simple showcase site (4 to 5 pages) starts around €800–1,500. More complex projects or redesigns are quoted individually. The service always includes design, development, hosting (1 year), domain name and deployment. Contact me for a free, no-obligation quote."
+      },
+      {
+        "q": "How long does it take?",
+        "a": "Plan for 3 to 5 weeks for a standard showcase site, depending on complexity and how quickly you provide content (text, photos). I work iteratively: mockup → validation → development → go live. You are kept informed at every step."
+      },
+      {
+        "q": "Do you also handle the domain, hosting and emails?",
+        "a": "Yes, that's the all-in-one principle. I manage the project from A to Z: domain name, hosting, SSL certificate, professional email addresses, continuous deployment. You don't need to deal with multiple providers — one point of contact for everything."
+      },
+      {
+        "q": "Who are your clients?",
+        "a": "Tradespeople, retailers, restaurants, associations, liberal professions (lawyers, doctors, therapists), small and medium businesses across all sectors. If you need a professional online presence and don't have time to manage it yourself, you're exactly who I work with."
+      },
+      {
+        "q": "Do you work remotely? I'm far from you.",
+        "a": "Yes, entirely remote, anywhere in France. An initial video call for briefing, exchanges by email or messaging, and a final review on a staging link. No in-person meeting required — the process works perfectly well at a distance."
+      },
+      {
+        "q": "How does a project actually work?",
+        "a": "In 6 steps: 1) Brief — we define your goals and identity together. 2) Design — I submit a visual direction. 3) Development — full integration, responsive and optimized. 4) Review — you validate on a staging link. 5) Go live — deployment on your domain. 6) Follow-up — available after launch."
+      },
+      {
+        "q": "What is SEO and why does it matter?",
+        "a": "SEO (Search Engine Optimization) refers to techniques that improve your website's ranking on Google. This includes code structure, loading speed, meta tags, content and inbound links. A well-optimized site attracts clients without paid advertising."
+      },
+      {
+        "q": "What is GEO (Generative Engine Optimization)?",
+        "a": "GEO is SEO for artificial intelligence. The goal is to be cited by ChatGPT, Claude or Perplexity when a user asks something like 'which freelance web developer do you recommend in France?'. This involves Schema.org structured data, an llms.txt file and an answer-oriented content architecture — techniques I integrate by default."
+      },
+      {
+        "q": "What happens after launch?",
+        "a": "I remain available for the first few weeks for adjustments. I then offer maintenance follow-up: technical updates, bug fixes, small content changes. For larger projects, a monthly maintenance contract can be set up."
+      },
+      {
+        "q": "Why choose a developer over Wix or Squarespace?",
+        "a": "Website builders give quick but generic results: identical templates, limited performance, total dependency on the platform. A developer delivers a unique, high-performance site (Core Web Vitals) that you fully own and that can evolve without technical constraints. In the long run, it's a better investment."
+      }
+    ]
+  },
   "theme_selector": {
     "label": "Switch theme",
     "ocean": "Ocean",

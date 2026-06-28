@@ -85,6 +85,52 @@
     "success": "Message envoyé avec succès !",
     "error": "Une erreur est survenue. Veuillez réessayer."
   },
+  "faq": {
+    "title": "Questions fréquentes",
+    "subtitle": "Tout ce que vous voulez savoir avant de démarrer un projet.",
+    "items": [
+      {
+        "q": "Combien coûte un site vitrine ?",
+        "a": "Un site vitrine simple (4 à 5 pages) démarre autour de 800 à 1 500 €. Un projet plus élaboré ou une refonte est devisé sur mesure. La prestation comprend toujours le design, le développement, l'hébergement (1 an), le nom de domaine et le déploiement. Contactez-moi pour un devis gratuit et sans engagement."
+      },
+      {
+        "q": "Quel est le délai de réalisation ?",
+        "a": "Comptez 3 à 5 semaines pour un site vitrine standard, selon la complexité et la rapidité de retour de vos contenus (textes, photos). Je travaille par itérations : maquette → validation → développement → mise en ligne. Vous êtes informé à chaque étape."
+      },
+      {
+        "q": "Vous vous occupez aussi du domaine, de l'hébergement et des emails ?",
+        "a": "Oui, c'est le principe clé en main. Je gère le projet de A à Z : nom de domaine, hébergement, certificat SSL, adresses email professionnelles, déploiement continu. Vous n'avez pas à gérer plusieurs prestataires — un seul interlocuteur pour tout."
+      },
+      {
+        "q": "Qui sont vos clients ?",
+        "a": "Artisans, commerçants, restaurants, associations, professions libérales (avocats, médecins, thérapeutes), TPE et PME de tous secteurs. Si vous avez besoin d'une présence en ligne professionnelle et que vous n'avez pas le temps de vous en occuper, vous êtes exactement ma cible."
+      },
+      {
+        "q": "Vous travaillez à distance ? Je suis loin de vous.",
+        "a": "Oui, entièrement à distance, partout en France. Un brief initial par visio, des échanges par email ou messagerie, et une validation finale sur lien de préproduction. Aucun rendez-vous physique n'est nécessaire — le processus fonctionne très bien à distance."
+      },
+      {
+        "q": "Comment se déroule un projet concrètement ?",
+        "a": "En 6 étapes : 1) Brief — on définit ensemble vos objectifs et votre identité. 2) Design — je vous soumets une direction graphique. 3) Développement — intégration complète, responsive et optimisée. 4) Recettage — vous validez sur un lien de préproduction. 5) Mise en ligne — déploiement sur votre domaine. 6) Suivi — disponible après le lancement."
+      },
+      {
+        "q": "Qu'est-ce que le SEO et pourquoi c'est important ?",
+        "a": "Le SEO (Search Engine Optimization) désigne les techniques pour améliorer le positionnement de votre site sur Google. Cela inclut la structure du code, la vitesse de chargement, les balises méta, le contenu et les liens entrants. Un site bien optimisé attire des clients sans publicité payante."
+      },
+      {
+        "q": "C'est quoi le GEO (Generative Engine Optimization) ?",
+        "a": "Le GEO est le SEO des intelligences artificielles. L'objectif est d'être cité par ChatGPT, Claude ou Perplexity quand un utilisateur demande par exemple « quel développeur web freelance me recommandes-tu en France ? ». Cela passe par des données structurées Schema.org, un fichier llms.txt et une architecture de contenu orientée réponses — des techniques que j'intègre par défaut."
+      },
+      {
+        "q": "Que se passe-t-il après la mise en ligne ?",
+        "a": "Je reste disponible les premières semaines pour les ajustements. Je propose ensuite un suivi maintenance : mises à jour techniques, corrections de bugs, petites évolutions du contenu. Pour les projets plus importants, un contrat de maintenance mensuel peut être mis en place."
+      },
+      {
+        "q": "Pourquoi choisir un développeur plutôt que Wix ou Squarespace ?",
+        "a": "Les constructeurs de sites donnent un résultat rapide mais générique : templates identiques, performances limitées, dépendance totale à la plateforme. Un développeur vous livre un site unique, performant (Core Web Vitals), que vous possédez entièrement et qui peut évoluer sans contrainte. Sur le long terme, c'est un meilleur investissement."
+      }
+    ]
+  },
   "theme_selector": {
     "label": "Changer de thème",
     "ocean": "Ocean",
