@@ -1,6 +1,11 @@
 # CLAUDE.md
 
 # MAJ 14/05/2026:
+system de mail : resend, compte créé. Utilisé aussi par BCK Management.
+La partie analytics, c'est Umami : fto1@gmx.fr, mot de passe à dormir debout 
+
+
+
 # Air Tricks Prod — Claude Code Instructions
 
 ## Stack technique

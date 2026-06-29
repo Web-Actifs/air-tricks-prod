@@ -44,6 +44,12 @@ export default function CodePortfolio() {
         ))}
       </div>
 
+      {showWeb && showVideo && (
+        <div className="code-portfolio__separator code-portfolio__separator--top">
+          <h3 className="code-portfolio__subsection-title">{t('portfolio.web_title')}</h3>
+        </div>
+      )}
+
       <AnimatePresence mode="wait">
         {showWeb && (
           <motion.div
@@ -61,6 +67,12 @@ export default function CodePortfolio() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {showWeb && showVideo && (
+        <div className="code-portfolio__separator">
+          <h3 className="code-portfolio__subsection-title">{t('portfolio.videos_title')}</h3>
+        </div>
+      )}
 
       <AnimatePresence mode="wait">
         {showVideo && (

@@ -972,6 +972,28 @@
   border-radius: var(--radius);
 }
 
+.code-portfolio__separator {
+  margin-top: 72px;
+  padding-top: 48px;
+  border-top: 1px solid var(--color-border);
+}
+
+.code-portfolio__separator--top {
+  margin-top: 40px;
+  padding-top: 0;
+  border-top: none;
+}
+
+.code-portfolio__subsection-title {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 32px;
+}
+
 /* ============================================================
    SERVICES — Code blocks / terminal windows
    ============================================================ */

@@ -108,20 +108,25 @@ export default function FusionPortfolio() {
           {showWeb && (
             <motion.div
               key="web-grid"
-              className="fusion-portfolio__bento"
+              className="fusion-portfolio__web"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
             >
-              {webProjects.map((project, index) => (
-                <TiltCard
-                  key={project.id}
-                  className={`fusion-portfolio__bento-item fusion-portfolio__bento-item--${(index % 6) + 1}`}
-                >
-                  <ProjectCard project={project} />
-                </TiltCard>
-              ))}
+              <h3 className="fusion-portfolio__section-title">
+                {t('portfolio.filter_web')}
+              </h3>
+              <div className="fusion-portfolio__bento">
+                {webProjects.map((project, index) => (
+                  <TiltCard
+                    key={project.id}
+                    className={`fusion-portfolio__bento-item fusion-portfolio__bento-item--${(index % 6) + 1}`}
+                  >
+                    <ProjectCard project={project} />
+                  </TiltCard>
+                ))}
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

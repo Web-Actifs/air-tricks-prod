@@ -17,6 +17,8 @@
     "filter_all": "All",
     "filter_web": "Web",
     "filter_video": "Video",
+    "web_title": "Web",
+    "videos_title": "Video",
     "view_site": "Visit site",
     "training_badge": "Training"
   },
