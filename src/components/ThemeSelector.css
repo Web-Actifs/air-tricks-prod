@@ -60,6 +60,25 @@
   border-color: var(--color-primary);
 }
 
+/* Flash de halo synchronisé sur la rafale de l'aiguille — uniquement tant que le
+   client n'a jamais changé de thème (classe --nudging portée par le conteneur) */
+.theme-selector--nudging .theme-selector__trigger {
+  animation: trigger-gust-glow 7s ease-in-out infinite;
+}
+
+@keyframes trigger-gust-glow {
+  0%, 36%   { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); }
+  40%       { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), 0 0 38px 12px var(--color-accent); }
+  46%       { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), 0 0 18px 5px var(--color-accent); }
+  52%, 100% { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-selector--nudging .theme-selector__trigger {
+    animation: none;
+  }
+}
+
 .theme-selector__compass {
   width: 100%;
   height: 100%;
@@ -76,15 +95,78 @@
   stroke: none;
 }
 
-/* Rotation lente de l'aiguille au repos via CSS (fiable sur SVG) */
+/* Rotation continue et tranquille de l'aiguille (régime par défaut, permanent) */
 .theme-selector__compass line {
   transform-origin: 20px 20px;
-  animation: compass-idle 8s linear infinite;
+  animation: compass-idle 7s linear infinite;
 }
 
 @keyframes compass-idle {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
+}
+
+/* Tant que le client n'a jamais changé de thème : la rotation calme est perturbée
+   par une rafale plus franche à mi-cycle, pour signaler que le bouton est interactif */
+.theme-selector--nudging .theme-selector__compass line {
+  animation: compass-gust 7s ease-in-out infinite;
+}
+
+@keyframes compass-gust {
+  0%   { transform: rotate(0deg); }     /* rotation calme, régime de croisière */
+  10%  { transform: rotate(36deg); }
+  20%  { transform: rotate(72deg); }
+  30%  { transform: rotate(108deg); }
+  38%  { transform: rotate(137deg); }
+  40%  { transform: rotate(215deg); }   /* rafale : à-coup puissant */
+  42%  { transform: rotate(160deg); }   /* rebond retour */
+  44%  { transform: rotate(190deg); }
+  46%  { transform: rotate(172deg); }
+  48%  { transform: rotate(180deg); }   /* stabilisé, reprise de la rotation calme */
+  60%  { transform: rotate(216deg); }
+  70%  { transform: rotate(252deg); }
+  80%  { transform: rotate(288deg); }
+  90%  { transform: rotate(324deg); }
+  100% { transform: rotate(360deg); }   /* boucle sans à-coup (360deg = 0deg) */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-selector__compass line {
+    animation: none;
+  }
+}
+
+/* Tooltip de découverte : bulle ponctuelle invitant à essayer un autre thème */
+.theme-selector__tooltip {
+  position: absolute;
+  bottom: calc(100% + 14px);
+  right: -8px;
+  width: max-content;
+  max-width: 190px;
+  padding: 0.55rem 0.85rem;
+  background: var(--color-bg-card);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+  box-shadow: 0 8px 24px var(--color-shadow, rgba(0, 0, 0, 0.25));
+  pointer-events: none;
+}
+
+.theme-selector__tooltip-arrow {
+  position: absolute;
+  bottom: -6px;
+  right: 20px;
+  width: 12px;
+  height: 12px;
+  background: var(--color-bg-card);
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  transform: rotate(45deg);
 }
 
 /* Anchor : conteneur relatif centré sur le trigger */

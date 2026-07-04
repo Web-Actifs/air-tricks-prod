@@ -135,6 +135,7 @@
   },
   "theme_selector": {
     "label": "Changer de thème",
+    "tooltip_hint": "Essayez un autre thème ↘",
     "ocean": "Ocean",
     "code": "Code",
     "fusion": "Fusion"
