@@ -36,6 +36,15 @@ export default function OceanContact() {
         >
           {t('contact.subtitle')}
         </motion.p>
+        <motion.p
+          className="ocean-contact__note"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.25 }}
+        >
+          {t('contact.note')}
+        </motion.p>
 
         <motion.form
           className="ocean-contact__form"

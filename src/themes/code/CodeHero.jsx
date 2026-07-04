@@ -55,6 +55,10 @@ export default function CodeHero() {
       >
         <h1 className="code-hero__title">{t('hero.title')}</h1>
         <p className="code-hero__tagline">{t('hero.tagline')}</p>
+        <p className="code-hero__subline">
+          <span className="code-hero__subline-comment">{'// '}</span>
+          {t('hero.subline')}
+        </p>
       </motion.div>
 
       <div className="code-hero__terminal">

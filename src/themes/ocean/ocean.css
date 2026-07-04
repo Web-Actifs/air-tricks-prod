@@ -1531,3 +1531,52 @@
 [data-theme="ocean"] .logo__prod {
   color: var(--color-primary);
 }
+
+/* ============================================================
+   CONVERSION — hero subline, pricing, contact note
+   ============================================================ */
+.ocean-hero__content .ocean-hero__tagline {
+  margin-bottom: 0.9rem;
+}
+
+.ocean-hero__subline {
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  color: var(--color-text);
+  opacity: 0.85;
+  max-width: 540px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.6;
+}
+
+.ocean-pricing {
+  margin: 4.5rem auto 0;
+  max-width: 640px;
+  text-align: center;
+  padding: 2.5rem 2rem;
+  background: var(--color-bg-glass);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  backdrop-filter: blur(12px);
+}
+
+.ocean-pricing__text {
+  font-family: var(--font-heading);
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 0.6rem;
+}
+
+.ocean-pricing__sub {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  margin: 0 0 1.6rem;
+}
+
+.ocean-contact__note {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--color-primary);
+  letter-spacing: 0.03em;
+  margin: 0 0 2rem;
+}

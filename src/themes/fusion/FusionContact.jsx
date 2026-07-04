@@ -17,6 +17,7 @@ export default function FusionContact() {
     <section className="fusion-contact section" id="contact">
       <h2 className="section__title">{t('contact.title')}</h2>
       <p className="section__subtitle">{t('contact.subtitle')}</p>
+      <p className="fusion-contact__note">{t('contact.note')}</p>
 
       <motion.form
         className="fusion-contact__form"

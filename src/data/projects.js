@@ -16,8 +16,8 @@ export const webProjects = [
     category: 'web',
     stack: ['HTML/CSS', 'JavaScript', 'WebP', 'Multilingue'],
     description: {
-      fr: "Site vitrine multilingue (FR/EN/ES) pour un centre de kitesurf au Mozambique. Design immersif avec vidéo d'accueil, galeries riches, présentation du spot, école, trips/kitesafaris et service vidéo pro Air Tricks Prod.",
-      en: 'Multilingual showcase website (FR/EN/ES) for a kitesurfing center in Mozambique. Immersive design with welcome video, rich galleries, spot presentation, school, trips/kitesafaris and Air Tricks Prod video service.',
+      fr: "Site vitrine trilingue (FR/EN/ES) pour un centre de kitesurf au Mozambique. Vidéo d'accueil immersive, galeries, école, trips et kitesafaris — trois langues pour capter une clientèle internationale et transformer les visites en réservations.",
+      en: 'Trilingual showcase website (FR/EN/ES) for a kitesurfing center in Mozambique. Immersive welcome video, galleries, school, trips and kitesafaris — three languages to reach an international audience and turn visits into bookings.',
     },
   },
   {
@@ -28,8 +28,8 @@ export const webProjects = [
     category: 'web',
     stack: ['HTML/CSS', 'JavaScript', 'Responsive', 'Bilingue'],
     description: {
-      fr: "Site vitrine bilingue pour une maison d'hôtes et lieu de retraite en Auvergne. Bâtisse en pierre du XIXe avec salle de pratique, design épuré et chaleureux, mise en avant de la philosophie solidaire.",
-      en: 'Bilingual showcase website for a guesthouse and retreat center in Auvergne, France. 19th-century stone building with practice room, clean and warm design, highlighting the solidarity philosophy.',
+      fr: "Site vitrine bilingue pour une maison d'hôtes et lieu de retraite en Auvergne. Un design épuré et chaleureux qui fait ressentir l'âme de cette bâtisse en pierre du XIXe dès la première seconde — et donne envie de réserver un séjour.",
+      en: "Bilingual showcase website for a guesthouse and retreat center in Auvergne, France. A clean, warm design that conveys the soul of this 19th-century stone building at first glance — and makes you want to book a stay.",
     },
   },
   {
@@ -40,8 +40,8 @@ export const webProjects = [
     category: 'web',
     stack: ['Framework moderne', 'Vercel', 'Trilingue', 'Carte interactive'],
     description: {
-      fr: "Site corporate trilingue (FR/EN/DE) pour un spécialiste des façades ventilées. 30 ans d'expertise, réalisations prestigieuses dont le Louvre, documentation technique et carte interactive des délégués.",
-      en: 'Trilingual corporate website (FR/EN/DE) for a ventilated facade specialist. 30 years of expertise, prestigious achievements including the Louvre, technical documentation and interactive delegate map.',
+      fr: "Site corporate trilingue (FR/EN/DE) pour un spécialiste des façades ventilées. 30 ans d'expertise et des références prestigieuses — dont le Louvre — mises en scène pour rassurer architectes et donneurs d'ordre. Documentation technique et carte interactive des délégués.",
+      en: 'Trilingual corporate website (FR/EN/DE) for a ventilated facade specialist. 30 years of expertise and prestigious references — including the Louvre — showcased to build trust with architects and project owners. Technical documentation and interactive delegate map.',
     },
   },
   {
@@ -52,8 +52,8 @@ export const webProjects = [
     category: 'web',
     stack: ['HTML', 'CSS', 'JavaScript', 'Responsive', 'Multilingue'],
     description: {
-      fr: "Site de l'association Rejoice, combinant bien-être personnel et aide humanitaire. Financement de projets pour l'enfance en Inde et Népal grâce aux séjours transformationnels. Identité minimaliste, témoignages authentiques, impact mesurable : 200+ enfants accompagnés.",
-      en: 'Website for Rejoice association, combining personal wellness and international humanitarian aid. Funding childhood projects in India and Nepal through transformational retreats. Minimalist identity, authentic testimonials, measurable impact: 200+ children supported.',
+      fr: "Site de l'association Rejoice, qui finance des projets pour l'enfance en Inde et au Népal grâce à des séjours transformationnels. Identité minimaliste et témoignages authentiques qui inspirent confiance aux donateurs — impact mesurable : 200+ enfants accompagnés.",
+      en: 'Website for Rejoice association, funding childhood projects in India and Nepal through transformational retreats. Minimalist identity and authentic testimonials that build donor trust — measurable impact: 200+ children supported.',
     },
   },
   {
@@ -64,8 +64,8 @@ export const webProjects = [
     category: 'web',
     stack: ['HTML', 'CSS', 'JavaScript vanilla', 'GitHub Pages'],
     description: {
-      fr: "Site one-page pour une location saisonnière au pied du Mont Ventoux. Galerie photo, icônes SVG custom, formulaire de réservation, design provençal sobre et élégant.",
-      en: 'One-page website for a seasonal rental at the foot of Mont Ventoux. Photo gallery, custom SVG icons, booking form, clean and elegant Provençal design.',
+      fr: "Site one-page pour une location saisonnière au pied du Mont Ventoux. Galerie photo, formulaire de réservation, design provençal sobre et élégant — tout ce qu'il faut pour convaincre un vacancier, sur une seule page.",
+      en: 'One-page website for a seasonal rental at the foot of Mont Ventoux. Photo gallery, booking form, clean and elegant Provençal design — everything needed to win over a holidaymaker, on a single page.',
     },
   },
   {
@@ -102,8 +102,8 @@ export const webProjects = [
     category: 'web',
     stack: ['HTML/CSS', 'JavaScript', 'Responsive', 'Multilingue'],
     description: {
-      fr: "Cabinet de cours de musique basé à Bruxelles. Clarinette, saxophone et formation musicale avec approche pédagogique humaniste centrée sur le souffle, l'oreille et la théorie. Parcours international (France, Pologne, Belgique), témoignages d'élèves authentiques.",
-      en: 'Music teaching studio based in Brussels. Clarinet, saxophone and music theory with humanistic pedagogy centered on breath, ear training and music theory. International background (France, Poland, Belgium), authentic student testimonials.',
+      fr: "Site pour un professeur de clarinette et saxophone à Bruxelles, à la pédagogie humaniste centrée sur le souffle, l'oreille et la théorie. Parcours international (France, Pologne, Belgique) et témoignages d'élèves mis en avant pour donner confiance aux futurs élèves et à leurs parents.",
+      en: 'Website for a clarinet and saxophone teacher in Brussels, with a humanistic pedagogy centered on breath, ear training and theory. International background (France, Poland, Belgium) and student testimonials highlighted to reassure future students and their parents.',
     },
   },
 ];

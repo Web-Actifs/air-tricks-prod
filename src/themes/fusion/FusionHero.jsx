@@ -126,6 +126,15 @@ export default function FusionHero() {
         >
           {t('hero.tagline')}
         </motion.p>
+        <motion.p
+          className="fusion-hero__subline"
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          custom={1.5}
+        >
+          {t('hero.subline')}
+        </motion.p>
         <motion.div
           className="fusion-hero__ctas"
           variants={fadeUp}

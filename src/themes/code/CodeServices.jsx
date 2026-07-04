@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const STACK_ITEMS = [
   'HTML5', 'CSS3/Sass', 'JavaScript', 'React', 'Vite',
@@ -124,6 +125,30 @@ export default function CodeServices() {
           </motion.div>
         ))}
       </div>
+
+      {/* ── Pricing terminal ── */}
+      <motion.div
+        className="code-services__pricing"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="code-services__card-header">
+          <Dots />
+          <span className="code-services__card-filename">tarifs.sh</span>
+        </div>
+        <div className="code-services__pricing-body">
+          <p className="code-services__pricing-cmd">
+            <span className="code-services__manifest-prompt">$</span> ./devis --gratuit
+          </p>
+          <p className="code-services__pricing-text">{t('services.pricing_text')}</p>
+          <p className="code-services__pricing-sub">{t('services.pricing_sub')}</p>
+          <Link to="/contact" className="code-hero__btn code-hero__btn--primary">
+            <span className="code-hero__btn-prefix">$</span> {t('services.pricing_cta')}
+          </Link>
+        </div>
+      </motion.div>
 
       {/* ── AI + infrastructure cards ── */}
       <div className="code-services__infra">

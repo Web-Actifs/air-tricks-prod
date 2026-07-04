@@ -1951,3 +1951,62 @@
 [data-theme="code"] ::-webkit-scrollbar-thumb:hover {
   background: var(--color-text-muted);
 }
+
+/* ============================================================
+   CONVERSION — hero subline, pricing terminal, contact note
+   ============================================================ */
+.code-hero__subline {
+  margin-top: 10px;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  max-width: 640px;
+}
+
+.code-hero__subline-comment {
+  color: var(--color-primary);
+}
+
+.code-services__pricing {
+  margin: 40px 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-bg-card);
+  overflow: hidden;
+}
+
+.code-services__pricing-body {
+  padding: 20px 24px 28px;
+  text-align: center;
+}
+
+.code-services__pricing-cmd {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  text-align: left;
+  margin: 0 0 14px;
+}
+
+.code-services__pricing-text {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0 0 6px;
+}
+
+.code-services__pricing-sub {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin: 0 0 20px;
+}
+
+.code-contact__note {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  color: var(--color-primary);
+  margin: 6px 0 0;
+}

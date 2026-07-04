@@ -13,6 +13,10 @@ export default function CodeContact() {
         {t('contact.title')}
       </h2>
       <p className="section__subtitle">{t('contact.subtitle')}</p>
+      <p className="code-contact__note">
+        <span className="code-services__comment">{'// '}</span>
+        {t('contact.note')}
+      </p>
 
       <motion.form
         className="code-contact__form"

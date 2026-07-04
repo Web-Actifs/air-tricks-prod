@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const STACK_ITEMS = [
   'HTML5', 'CSS3/Sass', 'JavaScript', 'React', 'Vite',
@@ -142,6 +143,18 @@ export default function FusionServices() {
                     <li key={item}>{item}</li>
                   ))}
                 </ul>
+              </div>
+
+              <div className="fusion-identity__block fusion-identity__block--pricing">
+                <span className="fusion-identity__label">
+                  <span className="fusion-identity__dot fusion-identity__dot--pricing" />
+                  {t('services.pricing_label')}
+                </span>
+                <p className="fusion-identity__value">{t('services.pricing_text')}</p>
+                <p className="fusion-identity__sub">{t('services.pricing_sub')}</p>
+                <Link to="/contact" className="fusion-identity__cta">
+                  {t('services.pricing_cta')}
+                </Link>
               </div>
 
               <div className="fusion-identity__block fusion-identity__block--seo">

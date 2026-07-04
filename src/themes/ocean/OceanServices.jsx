@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const SERVICE_ICONS = {
   web_creation: (
@@ -152,6 +153,21 @@ export default function OceanServices() {
             </motion.div>
           ))}
         </div>
+
+        {/* ── Pricing ── */}
+        <motion.div
+          className="ocean-pricing"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <p className="ocean-pricing__text">{t('services.pricing_text')}</p>
+          <p className="ocean-pricing__sub">{t('services.pricing_sub')}</p>
+          <Link to="/contact" className="ocean-btn ocean-btn--primary">
+            {t('services.pricing_cta')}
+          </Link>
+        </motion.div>
 
         {/* ── SEO / GEO split ── */}
         <motion.div

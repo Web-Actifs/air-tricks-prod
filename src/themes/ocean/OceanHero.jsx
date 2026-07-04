@@ -89,11 +89,20 @@ export default function OceanHero() {
           {t('hero.tagline')}
         </motion.p>
 
+        <motion.p
+          className="ocean-hero__subline"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
+        >
+          {t('hero.subline')}
+        </motion.p>
+
         <motion.div
           className="ocean-hero__cta"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5, ease: 'easeOut' }}
+          transition={{ duration: 0.8, delay: 0.55, ease: 'easeOut' }}
         >
           <Link to="/portfolio" className="ocean-btn ocean-btn--primary">
             {t('hero.cta_portfolio')}
