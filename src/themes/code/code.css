@@ -1932,6 +1932,71 @@
   }
 }
 
+/* ── Pipeline A→Z (processus 6 étapes) ── */
+.code-services__pipeline {
+  background: #0a0a10;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+
+.code-services__pipeline-body {
+  padding: 20px 24px 24px;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  line-height: 1.8;
+}
+
+.code-services__pipeline-sub {
+  color: var(--color-text-muted);
+  padding-left: 18px;
+  margin: 4px 0 14px;
+}
+
+.code-services__pipeline-step {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+  padding: 5px 0 5px 16px;
+  border-left: 2px solid var(--color-border);
+  margin-left: 4px;
+}
+
+.code-services__pipeline-stepnum {
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.code-services__pipeline-steptitle {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.code-services__pipeline-stepdesc {
+  color: var(--color-text-muted);
+}
+
+/* ── Ownership (infrastructure gérée) ── */
+.code-services__ownership {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 0;
+  padding: 0 0 0 32px;
+}
+
+.code-services__ownership li {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 2px 8px;
+}
+
 /* ============================================================
    SCROLLBAR STYLING (Code theme)
    ============================================================ */

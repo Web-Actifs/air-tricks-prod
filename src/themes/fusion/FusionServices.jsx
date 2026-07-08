@@ -17,6 +17,15 @@ const SERVICES = [
   { key: 'optimization', icon: 'zap'     },
 ];
 
+const TIMELINE_STEPS = [
+  { key: 'brief',    ai: false },
+  { key: 'design',   ai: false },
+  { key: 'dev',      ai: true  },
+  { key: 'infra',    ai: false },
+  { key: 'seo_step', ai: true  },
+  { key: 'support',  ai: true  },
+];
+
 function ServiceIcon({ type }) {
   const icons = {
     globe: (
@@ -138,6 +147,7 @@ export default function FusionServices() {
                   <span className="fusion-identity__dot fusion-identity__dot--az" />
                   {t('services.az_title')}
                 </span>
+                <p className="fusion-identity__sub fusion-identity__sub--az">{t('services.az_sub')}</p>
                 <ul className="fusion-identity__list">
                   {ownershipItems.map((item) => (
                     <li key={item}>{item}</li>
@@ -172,6 +182,36 @@ export default function FusionServices() {
             </div>
           </motion.div>
         </div>
+
+        {/* ── Process A→Z ── */}
+        <motion.div
+          className="fusion-process"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h3 className="fusion-services__stack-heading">{t('services.az_title')}</h3>
+          <div className="fusion-process__grid">
+            {TIMELINE_STEPS.map((step, i) => (
+              <motion.div
+                key={step.key}
+                className="fusion-process__step"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.07, duration: 0.4 }}
+              >
+                <span className="fusion-process__num">0{i + 1}</span>
+                <h4 className="fusion-process__title">{t(`services.step_${step.key}`)}</h4>
+                <p className="fusion-process__desc">{t(`services.step_${step.key}_desc`)}</p>
+                {step.ai && (
+                  <span className="fusion-item__ai-tag">✦ {t('services.ai_badge')}</span>
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
 
         {/* ── Stack ── */}
         <motion.div
@@ -222,6 +262,30 @@ export default function FusionServices() {
             <span className="fusion-seo__geo-badge">{t('services.seo_geo_label')}</span>
           </div>
         </motion.div>
+
+        {/* ── Atouts : créatif + réseau ── */}
+        <div className="fusion-bonus">
+          <motion.div
+            className="fusion-bonus__card fusion-bonus__card--creative"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h3 className="fusion-bonus__title">{t('services.creative_title')}</h3>
+            <p className="fusion-bonus__desc">{t('services.creative_desc')}</p>
+          </motion.div>
+          <motion.div
+            className="fusion-bonus__card fusion-bonus__card--network"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <h3 className="fusion-bonus__title">{t('services.network_title')}</h3>
+            <p className="fusion-bonus__desc">{t('services.network_desc')}</p>
+          </motion.div>
+        </div>
 
       </div>
     </section>

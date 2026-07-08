@@ -32,6 +32,7 @@ export default function OceanLayout({ children }) {
     { to: '/portfolio', label: t('nav.portfolio') },
     { to: '/services', label: t('nav.services') },
     { to: '/about', label: t('nav.about') },
+    { to: '/faq', label: t('nav.faq') },
     { to: '/contact', label: t('nav.contact') },
   ];
 

@@ -16,6 +16,15 @@ const SERVICES = [
   { key: 'optimization', file: 'optimization.jsx' },
 ];
 
+const TIMELINE_STEPS = [
+  { key: 'brief',    ai: false },
+  { key: 'design',   ai: false },
+  { key: 'dev',      ai: true  },
+  { key: 'infra',    ai: false },
+  { key: 'seo_step', ai: true  },
+  { key: 'support',  ai: true  },
+];
+
 function Dots() {
   return (
     <>
@@ -29,6 +38,7 @@ function Dots() {
 export default function CodeServices() {
   const { t } = useTranslation();
 
+  const ownershipItems = t('services.ownership_items').split(/\s*·\s*/);
   const aiLine = t('services.terminal_ai');
   const aiParts = aiLine.split('Claude Code');
 
@@ -126,6 +136,42 @@ export default function CodeServices() {
         ))}
       </div>
 
+      {/* ── Process A→Z pipeline ── */}
+      <motion.div
+        className="code-services__pipeline"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="code-services__card-header">
+          <Dots />
+          <span className="code-services__card-filename">de-a-a-z.sh</span>
+        </div>
+        <div className="code-services__pipeline-body">
+          <div className="code-services__manifest-cmd">
+            <span className="code-services__manifest-prompt">$</span>
+            <span className="code-services__manifest-cmd-text">./projet.sh --brief-to-live</span>
+          </div>
+          <p className="code-services__pipeline-sub">{t('services.az_sub')}</p>
+          {TIMELINE_STEPS.map((step, i) => (
+            <motion.div
+              key={step.key}
+              className="code-services__pipeline-step"
+              initial={{ opacity: 0, x: -8 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08, duration: 0.25 }}
+            >
+              <span className="code-services__pipeline-stepnum">[{i + 1}/6]</span>
+              <span className="code-services__pipeline-steptitle">{t(`services.step_${step.key}`)}</span>
+              <span className="code-services__pipeline-stepdesc">{t(`services.step_${step.key}_desc`)}</span>
+              {step.ai && <span className="code-services__card-ai-badge">[AI]</span>}
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+
       {/* ── Pricing terminal ── */}
       <motion.div
         className="code-services__pricing"
@@ -212,6 +258,11 @@ export default function CodeServices() {
             </div>
           </div>
           <p className="code-services__card-desc">{t('services.az_sub')}</p>
+          <ul className="code-services__ownership">
+            {ownershipItems.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
         </motion.div>
       </div>
 

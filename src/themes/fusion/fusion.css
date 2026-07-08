@@ -1198,6 +1198,10 @@
   margin: 0;
 }
 
+.fusion-identity__sub--az {
+  margin-bottom: 0.6rem;
+}
+
 .fusion-identity__list {
   list-style: none;
   padding: 0;
@@ -1233,6 +1237,109 @@
   font-weight: 700;
   color: #06b6d4;
   letter-spacing: 0.04em;
+}
+
+/* ── Process A→Z ── */
+.fusion-process {
+  margin-bottom: 3rem;
+}
+
+.fusion-process__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.fusion-process__step {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.fusion-process__step:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+}
+
+.fusion-process__num {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 0.6rem;
+}
+
+.fusion-process__title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--color-text);
+  margin: 0 0 0.4rem;
+}
+
+.fusion-process__desc {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  margin: 0 0 0.6rem;
+}
+
+@media (max-width: 900px) {
+  .fusion-process__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .fusion-process__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Atouts créatif / réseau ── */
+.fusion-bonus {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.fusion-bonus__card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.6rem 1.7rem;
+  border-top: 3px solid var(--color-primary);
+}
+
+.fusion-bonus__card--creative {
+  border-top-color: var(--color-accent);
+}
+
+.fusion-bonus__title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  color: var(--color-text);
+  margin: 0 0 0.5rem;
+}
+
+.fusion-bonus__desc {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .fusion-bonus {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ── Stack section ── */

@@ -11,6 +11,7 @@ const navItems = [
   { to: '/portfolio', label: 'nav.portfolio', icon: '>' },
   { to: '/services', label: 'nav.services', icon: '#' },
   { to: '/about', label: 'nav.about', icon: '@' },
+  { to: '/faq', label: 'nav.faq', icon: '?' },
   { to: '/contact', label: 'nav.contact', icon: '$' },
 ];
 

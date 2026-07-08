@@ -61,6 +61,8 @@ const cardVariants = {
 export default function OceanServices() {
   const { t } = useTranslation();
 
+  const ownershipItems = t('services.ownership_items').split(/\s*·\s*/);
+
   const services = [
     { key: 'web_creation', icon: SERVICE_ICONS.web_creation },
     { key: 'integration',  icon: SERVICE_ICONS.integration  },
@@ -130,6 +132,12 @@ export default function OceanServices() {
                   )}
                 </div>
               </motion.div>
+            ))}
+          </div>
+
+          <div className="ocean-az__ownership">
+            {ownershipItems.map((item) => (
+              <span key={item} className="ocean-az__ownership-item">{item}</span>
             ))}
           </div>
         </motion.div>
@@ -232,6 +240,16 @@ export default function OceanServices() {
           >
             <h3 className="ocean-highlight-card__title">{t('services.network_title')}</h3>
             <p className="ocean-highlight-card__desc">{t('services.network_desc')}</p>
+          </motion.div>
+          <motion.div
+            className="ocean-highlight-card ocean-highlight-card--ai"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <h3 className="ocean-highlight-card__title">✦ {t('services.ai_badge')}</h3>
+            <p className="ocean-highlight-card__desc">{t('services.ai_desc')}</p>
           </motion.div>
         </div>
       </div>

@@ -11,6 +11,7 @@ const NAV_LINKS = [
   { to: '/portfolio', key: 'portfolio' },
   { to: '/services', key: 'services' },
   { to: '/about', key: 'about' },
+  { to: '/faq', key: 'faq' },
   { to: '/contact', key: 'contact' },
 ];
 
