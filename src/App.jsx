@@ -5,6 +5,7 @@ import { useTheme } from './hooks/useTheme';
 import ThemeSelector from './components/ThemeSelector';
 import TransitionOverlay from './components/TransitionOverlay';
 import Footer from './components/Footer';
+import RouteMeta from './components/RouteMeta';
 import './i18n';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -14,6 +15,7 @@ const AboutPage = lazy(() => import('./pages/AboutPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const LegalPage = lazy(() => import('./pages/LegalPage'));
 const FaqPage = lazy(() => import('./pages/FaqPage'));
+const ProjectPage = lazy(() => import('./pages/ProjectPage'));
 
 const OceanLayout = lazy(() => import('./themes/ocean/OceanLayout'));
 const CodeLayout = lazy(() => import('./themes/code/CodeLayout'));
@@ -31,10 +33,12 @@ function ThemedApp() {
 
   return (
     <Suspense fallback={<div className="loading">...</div>}>
+      <RouteMeta />
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/portfolio/:id" element={<ProjectPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />

@@ -22,7 +22,21 @@
     "web_title": "Web",
     "videos_title": "Video",
     "view_site": "Visit site",
+    "case_study_link": "Case study",
     "training_badge": "Training"
+  },
+  "project": {
+    "case_study": "Case study",
+    "problem": "The need",
+    "solution": "The answer",
+    "result": "The result",
+    "features": "What the site delivers",
+    "visit": "Visit the website",
+    "back": "← Back to portfolio",
+    "cta_title": "A similar project in mind?",
+    "cta_text": "Let's talk — free, no-obligation quote, reply within 24 hours.",
+    "cta_button": "Contact me",
+    "training_note": "Project completed as part of the OpenClassrooms training program."
   },
   "services": {
     "title": "Services",
@@ -80,7 +94,13 @@
     "network": "15 years of network engineering — infrastructure, security, architecture. Your website stands on solid foundations.",
     "kite": "Professional kitesurf videographer and editor with Air Tricks Prod, in partnership with Bilene Kite Center in Mozambique.",
     "dev": "Certified web developer, specialized in custom showcase websites. The fusion of technical and creative.",
-    "name": "Guillaume Etienne"
+    "name": "Guillaume Etienne",
+    "stats": [
+      { "value": "15", "label": "years in IT engineering" },
+      { "value": "8", "label": "websites live" },
+      { "value": "4", "label": "languages delivered" },
+      { "value": "24 h", "label": "max response time" }
+    ]
   },
   "contact": {
     "title": "Contact",

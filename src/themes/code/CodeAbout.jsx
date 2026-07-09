@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 
 export default function CodeAbout() {
   const { t } = useTranslation();
+  const stats = t('about.stats', { returnObjects: true });
 
   const jsonData = [
     { key: 'name', value: `"${t('about.name')}"`, color: 'var(--code-string)' },
@@ -57,6 +58,22 @@ export default function CodeAbout() {
         <p>{t('about.network')}</p>
         <p>{t('about.kite')}</p>
         <p>{t('about.dev')}</p>
+      </div>
+
+      <div className="code-about__stats">
+        {Array.isArray(stats) && stats.map((s, i) => (
+          <motion.div
+            key={s.label}
+            className="code-about__stat"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.08, duration: 0.4 }}
+          >
+            <span className="code-about__stat-value">{s.value}</span>
+            <span className="code-about__stat-label">{'// '}{s.label}</span>
+          </motion.div>
+        ))}
       </div>
     </section>
   );

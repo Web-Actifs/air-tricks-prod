@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { caseStudies } from '../data/caseStudies';
 import './ProjectCard.css';
 
 export default function ProjectCard({ project }) {
@@ -52,14 +54,21 @@ export default function ProjectCard({ project }) {
             <span key={tech} className="project-card__tech">{tech}</span>
           ))}
         </div>
-        <a
-          href={project.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="project-card__link"
-        >
-          {t('portfolio.view_site')} →
-        </a>
+        <div className="project-card__links">
+          {caseStudies[project.id] && (
+            <Link to={`/portfolio/${project.id}`} className="project-card__link">
+              {t('portfolio.case_study_link')} →
+            </Link>
+          )}
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="project-card__link project-card__link--external"
+          >
+            {t('portfolio.view_site')} ↗
+          </a>
+        </div>
       </div>
     </motion.article>
   );

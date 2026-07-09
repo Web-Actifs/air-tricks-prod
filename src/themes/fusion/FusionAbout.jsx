@@ -9,11 +9,28 @@ const timeline = [
 
 export default function FusionAbout() {
   const { t } = useTranslation();
+  const stats = t('about.stats', { returnObjects: true });
 
   return (
     <section className="fusion-about section" id="about">
       <h2 className="section__title">{t('about.title')}</h2>
       <p className="section__subtitle">{t('about.intro')}</p>
+
+      <div className="fusion-stats">
+        {Array.isArray(stats) && stats.map((s, i) => (
+          <motion.div
+            key={s.label}
+            className="fusion-stats__item"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.08, duration: 0.4 }}
+          >
+            <span className="fusion-stats__value">{s.value}</span>
+            <span className="fusion-stats__label">{s.label}</span>
+          </motion.div>
+        ))}
+      </div>
 
       <div className="fusion-about__split">
         <div className="fusion-about__creative">

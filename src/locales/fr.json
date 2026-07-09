@@ -22,7 +22,21 @@
     "web_title": "Web",
     "videos_title": "Vidéo",
     "view_site": "Voir le site",
+    "case_study_link": "Étude de cas",
     "training_badge": "Formation"
+  },
+  "project": {
+    "case_study": "Étude de cas",
+    "problem": "Le besoin",
+    "solution": "La réponse",
+    "result": "Le résultat",
+    "features": "Ce que le site propose",
+    "visit": "Visiter le site",
+    "back": "← Retour au portfolio",
+    "cta_title": "Un projet similaire en tête ?",
+    "cta_text": "Parlons-en — devis gratuit et sans engagement, réponse sous 24 h.",
+    "cta_button": "Me contacter",
+    "training_note": "Projet réalisé dans le cadre de la formation OpenClassrooms."
   },
   "services": {
     "title": "Services",
@@ -80,7 +94,13 @@
     "network": "15 ans d'ingénierie réseau — infrastructure, sécurité, architecture. Votre site repose sur des fondations solides.",
     "kite": "Vidéaste et monteur professionnel kitesurf avec Air Tricks Prod, en partenariat avec Bilene Kite Center au Mozambique.",
     "dev": "Développeur web certifié, spécialisé dans les sites vitrines sur mesure. La fusion du technique et du créatif.",
-    "name": "Guillaume Etienne"
+    "name": "Guillaume Etienne",
+    "stats": [
+      { "value": "15", "label": "ans d'ingénierie IT" },
+      { "value": "8", "label": "sites en ligne" },
+      { "value": "4", "label": "langues livrées" },
+      { "value": "24 h", "label": "délai de réponse max" }
+    ]
   },
   "contact": {
     "title": "Contact",

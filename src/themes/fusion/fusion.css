@@ -1239,6 +1239,47 @@
   letter-spacing: 0.04em;
 }
 
+/* ── Stats About ── */
+.fusion-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 2rem 0 3rem;
+}
+
+.fusion-stats__item {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.3rem 1rem;
+  text-align: center;
+}
+
+.fusion-stats__value {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 2.1rem;
+  font-weight: 800;
+  line-height: 1.1;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.fusion-stats__label {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 768px) {
+  .fusion-stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 /* ── Process A→Z ── */
 .fusion-process {
   margin-bottom: 3rem;

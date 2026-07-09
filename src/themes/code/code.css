@@ -1997,6 +1997,45 @@
   padding: 2px 8px;
 }
 
+/* ── Stats About ── */
+.code-about__stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.code-about__stat {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 18px 16px;
+  text-align: center;
+}
+
+.code-about__stat-value {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.1;
+}
+
+.code-about__stat-label {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 768px) {
+  .code-about__stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 /* ============================================================
    SCROLLBAR STYLING (Code theme)
    ============================================================ */

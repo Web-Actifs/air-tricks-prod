@@ -33,6 +33,7 @@ const ICON_MAP = {
 
 export default function OceanAbout() {
   const { t } = useTranslation();
+  const stats = t('about.stats', { returnObjects: true });
 
   return (
     <section className="ocean-about">
@@ -62,6 +63,23 @@ export default function OceanAbout() {
         >
           {t('about.intro')}
         </motion.p>
+
+        {/* Stats */}
+        <div className="ocean-stats">
+          {Array.isArray(stats) && stats.map((s, i) => (
+            <motion.div
+              key={s.label}
+              className="ocean-stats__item"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 + i * 0.1, duration: 0.5 }}
+            >
+              <span className="ocean-stats__value">{s.value}</span>
+              <span className="ocean-stats__label">{s.label}</span>
+            </motion.div>
+          ))}
+        </div>
 
         {/* Timeline */}
         <div className="ocean-timeline">
