@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import { useTheme } from './hooks/useTheme';
 import ThemeSelector from './components/ThemeSelector';
@@ -53,12 +53,12 @@ function ThemedApp() {
   );
 }
 
+// Le router est fourni par l'entrée : BrowserRouter dans main.jsx (client),
+// StaticRouter dans entry-server.jsx (prérendu au build).
 export default function App() {
   return (
-    <BrowserRouter>
-      <ThemeProvider>
-        <ThemedApp />
-      </ThemeProvider>
-    </BrowserRouter>
+    <ThemeProvider>
+      <ThemedApp />
+    </ThemeProvider>
   );
 }

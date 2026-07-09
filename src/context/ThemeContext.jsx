@@ -10,6 +10,7 @@ export const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
+    if (typeof localStorage === 'undefined') return THEMES.CODE;
     return localStorage.getItem('atp-theme') || THEMES.CODE;
   });
   const [isTransitioning, setIsTransitioning] = useState(false);

@@ -4,11 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { webProjects } from '../data/projects';
 import { caseStudies } from '../data/caseStudies';
+import { DEFAULT_TITLE, DEFAULT_DESCRIPTION } from '../seo/meta';
 import './ProjectPage.css';
-
-const DEFAULT_TITLE = 'Air Tricks Prod | Développeur Web Freelance';
-const DEFAULT_DESCRIPTION =
-  "Développeur web freelance : site vitrine de A à Z — design, dev, hébergement, SEO et GEO. Devis gratuit. France entière.";
 
 export default function ProjectPage() {
   const { id } = useParams();

@@ -37,7 +37,7 @@ export default function ThemeSelector() {
   const [isOpen, setIsOpen] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
   const [hasSwitched, setHasSwitched] = useState(
-    () => localStorage.getItem(SWITCHED_KEY) === 'true'
+    () => typeof localStorage !== 'undefined' && localStorage.getItem(SWITCHED_KEY) === 'true'
   );
 
   // Tant que le client n'a jamais changé de thème, le tooltip apparaît à chaque
