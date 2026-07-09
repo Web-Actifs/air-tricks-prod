@@ -1,6 +1,7 @@
 # CLAUDE.md
 
-# MAJ 14/05/2026:
+# Pour Guillaume ça
+Tout se push en direct sur Vercel, Nom de domaine chez Infomaniak airtricksprod.fr
 system de mail : resend, compte créé. Utilisé aussi par BCK Management.
 La partie analytics, c'est Umami : fto1@gmx.fr, mot de passe à dormir debout 
 

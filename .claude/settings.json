@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git commit -m ' *)",
+      "Bash(xargs grep -l \"api.*contact\\\\|fetch.*contact\\\\|contact.*form\")",
+      "Bash(git add *)",
+      "Bash(git push *)",
+      "Bash(npm run *)",
+      "Read(//tmp/**)",
+      "Bash(cd \"c:\\\\gui\\\\web\\\\2026-pour-Prod\\\\AirTricksProd\" && cat /tmp/vite.log; echo \"---\"; ps aux | grep vite)",
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(chromium-cli --session atp)",
+      "Bash(node -e \"require.resolve\\('puppeteer'\\)\")"
+    ]
+  }
+}

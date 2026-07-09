@@ -8,7 +8,14 @@
       "Bash(awk '/\\\\.code-\\(portfolio|services|about|contact|footer\\)\\\\b[^_-]*\\\\{/{f=1;name=$0} f&&/background/{print name\" -> \"$0} f&&/\\\\}/{f=0}' src/themes/code/code.css)",
       "Bash(awk '/\\\\[data-theme=\"code\"\\\\] body/{f=1} f{print} f&&/\\\\}/{exit}' src/themes/code/code.css)",
       "Bash(git add *)",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "WebFetch(domain:arthur-reynaud-chanon.be)",
+      "WebFetch(domain:rejoice.ngo)",
+      "Bash(npm uninstall *)",
+      "Bash(git commit -m 'feat: textes orientés conversion \\(hero, services, tarifs, contact, projets\\) *)",
+      "PowerShell(npm run *)",
+      "PowerShell(git *)",
+      "PowerShell(git diff CLAUDE.md | Select-Object -First 40; \"-----\"; git diff .claude/settings.local.json | Select-Object -First 30; \"-----\"; Get-Content .claude/settings.json)"
     ],
     "deny": []
   }
